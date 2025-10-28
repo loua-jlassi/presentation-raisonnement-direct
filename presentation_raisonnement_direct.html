@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raisonnement Direct - Présentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            margin: 30px 0;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            page-break-after: always;
+        }
+
+        .title-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .title-slide h1 {
+            font-size: 3.8em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .title-slide h2 {
+            font-size: 1.6em;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .title-slide .info {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 2.2em;
+            margin: 40px 0 25px 0;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        h4 {
+            color: #8e44ad;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: #f39c12;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .method-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #667eea;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .formula {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+            padding: 30px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3em;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+            border: 2px solid #4caf50;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+        }
+
+        .step {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .conclusion {
+            background: white;
+            color: #2c3e50;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 2px solid #e9ecef;
+        }
+
+        .conclusion h2, .conclusion h3 {
+            color: #2c3e50;
+        }
+
+        .conclusion ul {
+            color: #555;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+        
+        /* Effets de survol pour les boîtes du plan */
+        .plan-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        
+        /* Amélioration des listes */
+        ul, ol {
+            padding-left: 25px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+        
+        /* Amélioration des paragraphes */
+        p {
+            margin: 15px 0;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        /* Amélioration des tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 500;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* ===== ANIMATIONS ET EFFETS DYNAMIQUES ===== */
+        
+        /* Animations d'entrée */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animation de typewriter */
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #667eea; }
+        }
+        
+        /* Animation de compteur */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animation de timeline */
+        @keyframes timelineProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        
+        /* Classes d'animation */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-zoomIn {
+            animation: zoomIn 0.6s ease-out forwards;
+        }
+        
+        .animate-bounceIn {
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+        
+        .animate-slideInFromTop {
+            animation: slideInFromTop 0.8s ease-out forwards;
+        }
+        
+        /* Délais d'animation */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        .delay-8 { animation-delay: 0.8s; }
+        
+        /* Effets de survol améliorés */
+        .hover-scale {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Animation de typewriter */
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #667eea;
+            white-space: nowrap;
+            animation: typewriter 3s steps(40, end), blink 0.75s step-end infinite;
+        }
+        
+        /* Animation de compteur */
+        .counter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            animation: countUp 1s ease-out forwards;
+        }
+        
+        /* Animation de timeline */
+        .timeline-progress {
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: timelineProgress 2s ease-out forwards;
+        }
+        
+        /* Effets de parallaxe */
+        .parallax {
+            transform: translateZ(0);
+            transition: transform 0.3s ease-out;
+        }
+        
+        /* Animations de chargement */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Effets de rotation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotate {
+            animation: rotate 2s linear infinite;
+        }
+        
+        /* Effets de vague */
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .wave {
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        /* Animations de texte */
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .text-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Effets de focus */
+        .focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Transitions fluides */
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Effets de particules */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Animation de gradient */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        /* ===== MODE PLEIN ÉCRAN ===== */
+        
+        .fullscreen-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .fullscreen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .fullscreen-btn:active {
+            transform: translateY(0);
+        }
+        
+        .fullscreen-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        /* Styles pour le mode plein écran */
+        .fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            z-index: 9999;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .fullscreen-mode.active {
+            display: block;
+        }
+        
+        .fullscreen-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+        
+        .fullscreen-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .fullscreen-slide .slide {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            overflow-y: auto;
+            box-shadow: none;
+            display: block;
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        
+        .fullscreen-slide .slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .fullscreen-slide .slide h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            color: #34495e;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .fullscreen-slide .slide h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .fullscreen-slide .slide p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .fullscreen-slide .slide ul, .fullscreen-slide .slide ol {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .fullscreen-slide .slide li {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .fullscreen-slide .slide table {
+            font-size: 1.1em;
+        }
+        
+        .fullscreen-slide .slide .method-box {
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .fullscreen-slide .slide .formula {
+            font-size: 1.4em;
+            padding: 20px;
+        }
+        
+        .fullscreen-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            gap: 15px;
+            z-index: 10000;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .control-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .exit-fullscreen {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: none;
+        }
+        
+        .exit-fullscreen:hover {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Animation de transition entre slides */
+        .slide-transition-enter {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        
+        .slide-transition-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.5s ease;
+        }
+        
+        .slide-transition-exit {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-transition-exit-active {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.5s ease;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .slide {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bouton de plein écran -->
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">
+        <svg viewBox="0 0 24 24">
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+        </svg>
+        Plein Écran
+    </button>
+
+    <div class="presentation-container">
+        
+        <!-- Page de garde -->
+        <div class="slide title-slide gradient-animate">
+            <h1 class="animate-slideInFromTop">RAISONNEMENT DIRECT</h1>
+            <h2 class="animate-fadeInUp delay-2">Représentation de connaissances et raisonnements</h2>
+            <div class="info animate-fadeInUp delay-3"><strong>Présenté par :</strong> Loua El Jelassi</div>
+            <div class="info animate-fadeInUp delay-4"><strong>Cours :</strong> Représentation de connaissances et raisonnements</div>
+            <div class="info animate-fadeInUp delay-5"><strong>Année :</strong> 2025/2026</div>
+        </div>
+
+        <!-- Plan -->
+        <div class="slide">
+            <h1>Plan de la Présentation</h1>
+            
+            <!-- Grille 2x4 pour les 8 sections -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr; gap: 20px; margin: 40px 0; max-width: 900px; margin-left: auto; margin-right: auto;">
+                
+                <!-- Boîte 1 - Introduction -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-1" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #e3f2fd; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">1</div>
+                        <div class="wave" style="font-size: 1.8em;">🎯</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Introduction & Historique</h3>
+                </div>
+
+                <!-- Boîte 2 - Qu'est-ce que -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-2" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #e8f5e8; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">2</div>
+                        <div class="wave" style="font-size: 1.8em;">🧠</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Qu'est-ce que le Raisonnement Direct ?</h3>
+                </div>
+
+                <!-- Boîte 3 - Architecture -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-3" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #fff3e0; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">3</div>
+                        <div class="wave" style="font-size: 1.8em;">🏗️</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Architecture</h3>
+                </div>
+
+                <!-- Boîte 4 - Méthodes -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-4" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #f3e5f5; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);">4</div>
+                        <div class="wave" style="font-size: 1.8em;">⚙️</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Méthodes d'Inférence</h3>
+                </div>
+
+                <!-- Boîte 5 - Applications -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-5" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #e1f5fe; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);">5</div>
+                        <div class="wave" style="font-size: 1.8em;">🏢</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Applications</h3>
+                </div>
+
+                <!-- Boîte 6 - Exemple -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-6" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #fce4ec; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);">6</div>
+                        <div class="wave" style="font-size: 1.8em;">🎬</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Exemple Concret</h3>
+                </div>
+
+                <!-- Boîte 7 - Avantages/Limites -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-7" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #fff8e1; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #ffc107 0%, #ffd54f 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);">7</div>
+                        <div class="wave" style="font-size: 1.8em;">⚖️</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Avantages & Limites</h3>
+                </div>
+
+                <!-- Boîte 8 - Conclusion -->
+                <div class="hover-scale hover-lift animate-zoomIn delay-8" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #e8f5e8; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <div class="float" style="background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">8</div>
+                        <div class="wave" style="font-size: 1.8em;">🎯</div>
+                    </div>
+                    <h3 style="margin: 0; color: #2c3e50; font-size: 1.2em; font-weight: 500;">Conclusion</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Introduction - Historique -->
+        <div class="slide">
+            <h1>Introduction - Historique et origine</h1>
+            
+            <!-- Timeline historique -->
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 30px 0;">
+                <h3 style="text-align: center; margin-bottom: 30px; color: #2c3e50;">🕰️ Évolution du raisonnement direct</h3>
+                
+                <!-- Période antique -->
+                <div style="display: flex; align-items: center; margin: 25px 0; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%); color: white; padding: 15px; border-radius: 50%; margin-right: 20px; min-width: 80px; text-align: center;">
+                        <div style="font-size: 0.9em; font-weight: bold;">384-322</div>
+                        <div style="font-size: 0.8em;">av. J.-C.</div>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 10px 0; color: #8e44ad;">🏛️ Aristote - Fondateur de la logique formelle</h4>
+                        <p style="margin: 0; color: #666; line-height: 1.5;">
+                            <strong>Organon</strong> : Premier traité systématique sur le raisonnement<br>
+                            <strong>Syllogisme</strong> : Base du raisonnement déductif moderne
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Période moderne -->
+                <div style="display: flex; align-items: center; margin: 25px 0; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(135deg, #3498db 0%, #5dade2 100%); color: white; padding: 15px; border-radius: 50%; margin-right: 20px; min-width: 80px; text-align: center;">
+                        <div style="font-size: 0.9em; font-weight: bold;">1848-1954</div>
+                        <div style="font-size: 0.8em;">Ère moderne</div>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 10px 0; color: #3498db;">🔬 Formalisation mathématique</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 10px;">
+                            <div style="text-align: center; padding: 10px; background: #ecf0f1; border-radius: 8px;">
+                                <strong>Frege</strong><br>
+                                <small>Logique mathématique</small>
+                            </div>
+                            <div style="text-align: center; padding: 10px; background: #ecf0f1; border-radius: 8px;">
+                                <strong>Tarski</strong><br>
+                                <small>Théorie de la vérité</small>
+                            </div>
+                            <div style="text-align: center; padding: 10px; background: #ecf0f1; border-radius: 8px;">
+                                <strong>Turing</strong><br>
+                                <small>Calculabilité</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Période contemporaine -->
+                <div style="display: flex; align-items: center; margin: 25px 0; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 15px; border-radius: 50%; margin-right: 20px; min-width: 80px; text-align: center;">
+                        <div style="font-size: 0.9em; font-weight: bold;">1950-</div>
+                        <div style="font-size: 0.8em;">Aujourd'hui</div>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 10px 0; color: #27ae60;">🤖 Intelligence artificielle et systèmes experts</h4>
+                        <div style="display: flex; justify-content: space-around; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
+                            <div style="text-align: center; padding: 8px 15px; background: #e8f5e8; border-radius: 20px; font-size: 0.9em;">
+                                🧠 Systèmes experts
+                            </div>
+                            <div style="text-align: center; padding: 8px 15px; background: #e8f5e8; border-radius: 20px; font-size: 0.9em;">
+                                📊 Représentation des connaissances
+                            </div>
+                            <div style="text-align: center; padding: 8px 15px; background: #e8f5e8; border-radius: 20px; font-size: 0.9em;">
+                                ⚙️ Moteurs d'inférence
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Introduction - Définition complète -->
+        <div class="slide">
+            <h1>Qu'est-ce que le raisonnement direct ?</h1>
+            
+            <h3>Définition fondamentale</h3>
+            <div class="method-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-size: 1.2em; line-height: 1.6; margin: 0;">
+                    <strong>Le raisonnement direct</strong> est une méthode de déduction logique permettant d'inférer de nouvelles connaissances à partir de faits et de règles connus, en appliquant des règles d'inférence de manière systématique et déterministe.
+                </p>
+            </div>
+
+            <h3>⚙️ Principe de base</h3>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">Le raisonnement direct fonctionne comme un <strong>moteur d'inférence</strong> :</p>
+            <div style="display: flex; justify-content: space-around; margin: 25px 0; flex-wrap: wrap;">
+                <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 12px; margin: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">1️⃣</div>
+                    <h4>Prend des faits initiaux</h4>
+                    <p style="margin: 0; font-size: 0.9em;">(prémisses)</p>
+                </div>
+                <div style="background: #f39c12; color: white; padding: 20px; border-radius: 12px; margin: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">2️⃣</div>
+                    <h4>Applique des règles logiques</h4>
+                    <p style="margin: 0; font-size: 0.9em;">(règles d'inférence)</p>
+                </div>
+                <div style="background: #27ae60; color: white; padding: 20px; border-radius: 12px; margin: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">3️⃣</div>
+                    <h4>Génère de nouvelles conclusions</h4>
+                    <p style="margin: 0; font-size: 0.9em;">(faits dérivés)</p>
+                </div>
+            </div>
+
+            <h3>🔄 Schéma du processus</h3>
+            <div style="text-align: center; margin: 30px 0; background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
+                    <div style="background: #e74c3c; color: white; padding: 25px; border-radius: 12px; min-width: 180px; flex: 1;">
+                        <h4 style="margin: 0 0 10px 0;">FAITS INITIAUX</h4>
+                        <p style="margin: 0; font-size: 1.1em;">P, Q, R...</p>
+                    </div>
+                    <div style="font-size: 2.5em; color: #3498db;">→</div>
+                    <div style="background: #f39c12; color: white; padding: 25px; border-radius: 12px; min-width: 180px; flex: 1;">
+                        <h4 style="margin: 0 0 10px 0;">RÈGLES</h4>
+                        <p style="margin: 0; font-size: 1.1em;">P→Q, Q→R...</p>
+                    </div>
+                    <div style="font-size: 2.5em; color: #3498db;">→</div>
+                    <div style="background: #27ae60; color: white; padding: 25px; border-radius: 12px; min-width: 180px; flex: 1;">
+                        <h4 style="margin: 0 0 10px 0;">CONCLUSIONS</h4>
+                        <p style="margin: 0; font-size: 1.1em;">S, T, U...</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🧩 Caractéristiques du raisonnement direct</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #fff3cd; border: 2px solid #ffeaa7; padding: 15px; border-radius: 8px; border-left: 5px solid #f39c12;">
+                    <h4 style="margin: 0 0 8px 0; color: #856404;">🎯 Déterministe</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Même résultat pour les mêmes prémisses. Processus prévisible.</p>
+                </div>
+                <div style="background: #d1ecf1; border: 2px solid #bee5eb; padding: 15px; border-radius: 8px; border-left: 5px solid #17a2b8;">
+                    <h4 style="margin: 0 0 8px 0; color: #0c5460;">📈 Monotone</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Les conclusions restent valides même avec de nouvelles informations.</p>
+                </div>
+                <div style="background: #d4edda; border: 2px solid #c3e6cb; padding: 15px; border-radius: 8px; border-left: 5px solid #28a745;">
+                    <h4 style="margin: 0 0 8px 0; color: #155724;">✅ Complet</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Toutes les conclusions possibles peuvent être dérivées.</p>
+                </div>
+                <div style="background: #f8d7da; border: 2px solid #f5c6cb; padding: 15px; border-radius: 8px; border-left: 5px solid #dc3545;">
+                    <h4 style="margin: 0 0 8px 0; color: #721c24;">🛡️ Sûr</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Seules les conclusions logiquement valides sont produites.</p>
+                </div>
+            </div>
+
+            <h3>🔗 Types de raisonnement direct</h3>
+            <div style="display: flex; justify-content: space-around; margin: 25px 0; flex-wrap: wrap; gap: 15px;">
+                <div style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <h4 style="margin: 0 0 10px 0; color: #27ae60;">🔹 Chaînage avant</h4>
+                    <p style="margin: 0 0 8px 0; font-weight: bold;">Faits → Conclusions</p>
+                    <p style="margin: 0; font-size: 0.9em;">On déduit de nouvelles connaissances à partir des faits connus.</p>
+                </div>
+                <div style="background: #fff3e0; border: 2px solid #ff9800; padding: 20px; border-radius: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <h4 style="margin: 0 0 10px 0; color: #ff9800;">🔹 Chaînage arrière</h4>
+                    <p style="margin: 0 0 8px 0; font-weight: bold;">But → Prémisses</p>
+                    <p style="margin: 0; font-size: 0.9em;">On part d'un objectif à vérifier pour retrouver les faits nécessaires.</p>
+                </div>
+                <div style="background: #f3e5f5; border: 2px solid #9c27b0; padding: 20px; border-radius: 10px; text-align: center; min-width: 200px; flex: 1;">
+                    <h4 style="margin: 0 0 10px 0; color: #9c27b0;">⚖️ Résolution</h4>
+                    <p style="margin: 0 0 8px 0; font-weight: bold;">—</p>
+                    <p style="margin: 0; font-size: 0.9em;">Méthode d'élimination de littéraux contradictoires.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture du raisonnement direct -->
+        <div class="slide">
+            <h1>Architecture du Raisonnement Direct</h1>
+            
+            <h3>🧠 Définition</h3>
+            <div class="method-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-size: 1.1em; line-height: 1.6; margin: 0;">
+                    L'<strong>architecture du raisonnement direct</strong> désigne la structure interne du système qui met en œuvre le processus d'inférence logique. Elle définit les composants essentiels et leurs interactions pour permettre la déduction automatique de nouvelles connaissances à partir de faits et de règles.
+                </p>
+            </div>
+
+            <h3>🏗️ Composants principaux</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+                <div style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 12px; border-left: 5px solid #27ae60;">
+                    <h4 style="margin: 0 0 15px 0; color: #27ae60;">1️⃣ Base de faits</h4>
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;">Contient les connaissances connues (les faits ou prémisses).</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Se met à jour à mesure que de nouvelles conclusions sont déduites.</p>
+                </div>
+                <div style="background: #fff3e0; border: 2px solid #ff9800; padding: 20px; border-radius: 12px; border-left: 5px solid #ff9800;">
+                    <h4 style="margin: 0 0 15px 0; color: #ff9800;">2️⃣ Base de règles</h4>
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;">Regroupe les règles d'inférence sous forme de conditions et de conclusions.</p>
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 6px; margin-top: 10px; font-family: monospace; font-size: 0.85em;">
+                        <strong>Exemple :</strong><br>
+                        SI P est vrai<br>
+                        ALORS Q est vrai
+                    </div>
+                </div>
+                <div style="background: #e3f2fd; border: 2px solid #2196f3; padding: 20px; border-radius: 12px; border-left: 5px solid #2196f3;">
+                    <h4 style="margin: 0 0 15px 0; color: #1976d2;">3️⃣ Moteur d'inférence</h4>
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;"><strong>C'est le cœur du système.</strong></p>
+                    <p style="margin: 0 0 10px 0; font-size: 0.9em;">Il applique les règles de la base de règles aux faits existants pour déduire de nouveaux faits.</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Fonctionne selon un mécanisme de chaînage avant ou chaînage arrière.</p>
+                </div>
+                <div style="background: #f3e5f5; border: 2px solid #9c27b0; padding: 20px; border-radius: 12px; border-left: 5px solid #9c27b0;">
+                    <h4 style="margin: 0 0 15px 0; color: #9c27b0;">4️⃣ Mémoire de travail</h4>
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;">Espace temporaire où le moteur d'inférence stocke les faits dérivés avant de les valider.</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Sert à suivre l'évolution du raisonnement.</p>
+                </div>
+            </div>
+
+            <div style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 12px; border-left: 5px solid #27ae60; margin: 20px 0;">
+                <h4 style="margin: 0 0 15px 0; color: #27ae60;">5️⃣ Interface utilisateur (ou module d'explication)</h4>
+                <p style="margin: 0 0 10px 0; font-size: 0.95em;">Permet à l'utilisateur de :</p>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.9em;">
+                    <li>Introduire des faits ou des règles</li>
+                    <li>Consulter les résultats</li>
+                    <li>Visualiser le cheminement logique du raisonnement</li>
+                </ul>
+            </div>
+
+            <h3>🔄 Schéma simplifié de l'architecture</h3>
+            <div style="text-align: center; margin: 30px 0; background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                <div style="font-family: monospace; font-size: 0.9em; line-height: 1.8;">
+                    <div style="background: #ff9800; color: white; padding: 15px; border-radius: 8px; margin: 10px auto; max-width: 300px;">
+                        <strong>Base de Règles</strong>
+                    </div>
+                    <div style="margin: 10px 0;">↑</div>
+                    <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 8px; min-width: 150px;">
+                            <strong>Interface /<br>Utilisateur</strong>
+                        </div>
+                        <div style="font-size: 1.5em;">→</div>
+                        <div style="background: #2196f3; color: white; padding: 15px; border-radius: 8px; min-width: 150px;">
+                            <strong>Moteur<br>d'Inférence</strong>
+                        </div>
+                        <div style="font-size: 1.5em;">→</div>
+                        <div style="background: #27ae60; color: white; padding: 15px; border-radius: 8px; min-width: 150px;">
+                            <strong>Base de Faits</strong>
+                        </div>
+                    </div>
+                    <div style="margin: 10px 0;">↓</div>
+                    <div style="background: #9c27b0; color: white; padding: 15px; border-radius: 8px; margin: 10px auto; max-width: 200px;">
+                        <strong>Mémoire de Travail</strong>
+                    </div>
+                </div>
+            </div>
+
+            <h3>⚙️ Fonctionnement global</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 20px 0;">
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #e74c3c; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">1</div>
+                    <p style="margin: 0; flex: 1;">L'utilisateur saisit des faits initiaux.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">2</div>
+                    <p style="margin: 0; flex: 1;">Le moteur d'inférence recherche dans la base de règles celles qui s'appliquent.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #2196f3; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">3</div>
+                    <p style="margin: 0; flex: 1;">Les nouvelles conclusions sont ajoutées dans la base de faits.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #9c27b0; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">4</div>
+                    <p style="margin: 0; flex: 1;">Le processus se répète jusqu'à ce qu'aucune règle ne soit plus applicable.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #27ae60; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">5</div>
+                    <p style="margin: 0; flex: 1;">Le module d'explication présente les résultats à l'utilisateur.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Méthodes d'inférence - Introduction -->
+        <div class="slide">
+            <h1>Les Méthodes d'Inférence les Plus Utilisées</h1>
+            
+            <h3>🧾 Méthodes du Raisonnement Direct</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0; background: white;">
+                <tr style="background: #3498db; color: white;">
+                    <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">Méthode</th>
+                    <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">Type</th>
+                    <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">Utilisation principale</th>
+                    <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">Domaines d'application</th>
+                </tr>
+                <tr style="background: #f8f9fa;">
+                    <td style="padding: 12px; border: 1px solid #ddd;"><strong>🔹 Chaînage avant</strong></td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Raisonnement direct</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Génération automatique de faits</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Systèmes experts, IA, moteurs de règles</td>
+                </tr>
+                <tr style="background: white;">
+                    <td style="padding: 12px; border: 1px solid #ddd;"><strong>🧩 Modus Ponens</strong></td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Règle de base</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Déduction simple</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">Tous les systèmes logiques</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Méthode 1 : Chaînage Avant -->
+        <div class="slide">
+            <h1>🔹 1️⃣ Chaînage Avant (Forward Chaining)</h1>
+            
+            <h3>🧠 Principe</h3>
+            <div class="method-box" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-size: 1.1em; line-height: 1.6; margin: 0;">
+                    Le chaînage avant est la <strong>méthode la plus utilisée</strong> dans les systèmes experts et les moteurs d'inférence. Elle consiste à partir des faits connus et à appliquer les règles pour générer de nouvelles conclusions.
+                </p>
+            </div>
+
+            <h3>⚙️ Fonctionnement</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 20px 0;">
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #e74c3c; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">1</div>
+                    <p style="margin: 0; flex: 1;">On prend la base de faits initiale.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">2</div>
+                    <p style="margin: 0; flex: 1;">On applique toutes les règles dont les conditions sont vraies.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #2196f3; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">3</div>
+                    <p style="margin: 0; flex: 1;">On ajoute les conclusions obtenues à la base de faits.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #9c27b0; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">4</div>
+                    <p style="margin: 0; flex: 1;">On répète jusqu'à ce qu'il n'y ait plus de nouvelles conclusions.</p>
+                </div>
+            </div>
+
+            <h3>💡 Exemple</h3>
+            <div class="example-box" style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p style="margin: 0 0 10px 0;"><strong>Règle :</strong> Si il pleut → la route est mouillée</p>
+                <p style="margin: 0 0 10px 0;"><strong>Fait :</strong> Il pleut</p>
+                <p style="margin: 0; font-size: 1.2em; color: #27ae60;"><strong>⇒ Conclusion :</strong> La route est mouillée</p>
+            </div>
+
+            <h3>✅ Avantages</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Simple à implémenter</p>
+                </div>
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Très efficace pour générer des connaissances</p>
+                </div>
+            </div>
+            <p style="margin: 15px 0; font-size: 0.95em; color: #666;">Utilisé dans les systèmes experts, les assistants intelligents, les moteurs de règles (Drools, CLIPS, Jess)</p>
+        </div>
+
+        <!-- Méthode 2 : Modus Ponens -->
+        <div class="slide">
+            <h1>🧩 2️⃣ Modus Ponens (Règle Fondamentale)</h1>
+            
+            <h3>🧠 Principe</h3>
+            <div class="method-box" style="background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-size: 1.1em; line-height: 1.6; margin: 0;">
+                    Le Modus Ponens est la <strong>règle d'inférence de base</strong> sur laquelle reposent toutes les autres méthodes. C'est la brique élémentaire du raisonnement direct.
+                </p>
+            </div>
+
+            <h3>⚙️ Forme générale</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 20px 0; text-align: center;">
+                <div style="font-family: 'Courier New', monospace; font-size: 1.3em; line-height: 2.5;">
+                    <div style="margin: 10px 0;">P → Q</div>
+                    <div style="margin: 10px 0;">P</div>
+                    <div style="border-top: 2px solid #e74c3c; margin: 15px 0; padding-top: 10px; font-weight: bold;">∴ Q</div>
+                </div>
+            </div>
+
+            <h3>✅ Avantages</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Simple, logique, universelle</p>
+                </div>
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Base des chaînages avant et arrière</p>
+                </div>
+            </div>
+            <p style="margin: 15px 0; font-size: 0.95em; color: #666;">Utilisée dans tous les moteurs d'inférence</p>
+        </div>
+
+        <!-- Applications industrielles -->
+        <div class="slide">
+            <h1>🏢 Applications du Raisonnement Direct</h1>
+            
+            <!-- Section principale organisée -->
+            <div style="margin: 30px 0;">
+                
+                <!-- Titre central -->
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px 50px; border-radius: 30px; display: inline-block; box-shadow: 0 12px 35px rgba(102, 126, 234, 0.3);">
+                        <div style="font-size: 3em; margin-bottom: 15px;">🧠</div>
+                        <h2 style="margin: 0; font-size: 1.8em; font-weight: 300;">Raisonnement Direct</h2>
+                    </div>
+                </div>
+                
+                <!-- 4 domaines principaux en grille -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                    
+                    <!-- Systèmes Experts -->
+                    <div class="hover-scale hover-glow animate-fadeInLeft delay-1" style="background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(79, 195, 247, 0.25);">
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div class="float" style="font-size: 2.8em; margin-right: 20px;">🏥</div>
+                            <h3 style="margin: 0; font-size: 1.4em; font-weight: 500;">Systèmes Experts</h3>
+                        </div>
+                        <ul style="margin: 0; padding-left: 25px; line-height: 1.9;">
+                            <li class="text-reveal"><strong>Diagnostic médical</strong> : Analyse des symptômes</li>
+                            <li class="text-reveal delay-1"><strong>Conseil technique</strong> : Résolution de problèmes</li>
+                            <li class="text-reveal delay-2"><strong>Maintenance prédictive</strong> : Détection d'anomalies</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Intelligence Artificielle -->
+                    <div style="background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 112, 67, 0.25);">
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="font-size: 2.8em; margin-right: 20px;">🤖</div>
+                            <h3 style="margin: 0; font-size: 1.4em; font-weight: 500;">Intelligence Artificielle</h3>
+                        </div>
+                        <ul style="margin: 0; padding-left: 25px; line-height: 1.9;">
+                            <li><strong>Agents intelligents</strong> : Prise de décision</li>
+                            <li><strong>Moteurs de règles</strong> : Automatisation</li>
+                            <li><strong>Assistants virtuels</strong> : Réponses logiques</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Vérification Formelle -->
+                    <div style="background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(102, 187, 106, 0.25);">
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="font-size: 2.8em; margin-right: 20px;">🔍</div>
+                            <h3 style="margin: 0; font-size: 1.4em; font-weight: 500;">Vérification Formelle</h3>
+                        </div>
+                        <ul style="margin: 0; padding-left: 25px; line-height: 1.9;">
+                            <li><strong>Preuve de programmes</strong> : Validation logicielle</li>
+                            <li><strong>Vérification de protocoles</strong> : Sécurité réseau</li>
+                            <li><strong>Validation de circuits</strong> : Électronique</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Bases de Données -->
+                    <div style="background: linear-gradient(135deg, #ab47bc 0%, #9c27b0 100%); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(171, 71, 188, 0.25);">
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="font-size: 2.8em; margin-right: 20px;">📊</div>
+                            <h3 style="margin: 0; font-size: 1.4em; font-weight: 500;">Bases de Données</h3>
+                        </div>
+                        <ul style="margin: 0; padding-left: 25px; line-height: 1.9;">
+                            <li><strong>Requêtes complexes</strong> : Dérivation de données</li>
+                            <li><strong>Intégrité référentielle</strong> : Contraintes logiques</li>
+                            <li><strong>Découverte de connaissances</strong> : Data mining</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exemple simple et clair -->
+        <div class="slide">
+            <h1>Exemple d'application - Système de recommandation de films</h1>
+
+            <h3>⚙️ Fonctionnement</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 20px 0;">
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #e74c3c; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">1</div>
+                    <p style="margin: 0; flex: 1;">L'utilisateur indique ses préférences (genre, acteur, année).</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">2</div>
+                    <p style="margin: 0; flex: 1;">Le système applique des règles logiques pour filtrer les films.</p>
+                </div>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <div style="background: #2196f3; color: white; padding: 8px 12px; border-radius: 50%; margin-right: 15px; font-weight: bold;">3</div>
+                    <p style="margin: 0; flex: 1;">Il génère une liste de recommandations personnalisées.</p>
+                </div>
+            </div>
+
+            <h3>💡 Exemple concret</h3>
+            <div class="example-box" style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p style="margin: 0 0 10px 0;"><strong>Règle :</strong> Si genre = "Action" ET acteur = "Tom Cruise" → Recommander</p>
+                <p style="margin: 0 0 10px 0;"><strong>Préférences :</strong> Action, Tom Cruise, 2020-2024</p>
+                <p style="margin: 0; font-size: 1.2em; color: #27ae60;"><strong>⇒ Résultat :</strong> "Top Gun: Maverick", "Mission: Impossible 7"</p>
+            </div>
+
+            <h3>✅ Avantages</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Recommandations précises</p>
+                </div>
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 8px;">
+                    <p style="margin: 0; font-weight: bold;">Explications claires</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Avantages et Limites -->
+        <div class="slide">
+            <h1>Avantages et Limites du Raisonnement Direct</h1>
+            
+            <h3>✅ Avantages</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+                <div style="background: #d4edda; border: 2px solid #28a745; padding: 20px; border-radius: 12px; border-left: 5px solid #28a745;">
+                    <h4 style="margin: 0 0 15px 0; color: #155724;">🎯 Déterminisme</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Résultats prévisibles et reproductibles pour les mêmes prémisses.</p>
+                </div>
+                <div style="background: #d1ecf1; border: 2px solid #17a2b8; padding: 20px; border-radius: 12px; border-left: 5px solid #17a2b8;">
+                    <h4 style="margin: 0 0 15px 0; color: #0c5460;">🛡️ Sûreté</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Seules les conclusions logiquement valides sont produites.</p>
+                </div>
+                <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 12px; border-left: 5px solid #ffc107;">
+                    <h4 style="margin: 0 0 15px 0; color: #856404;">📈 Complétude</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Toutes les conclusions possibles peuvent être dérivées.</p>
+                </div>
+                <div style="background: #e8f5e8; border: 2px solid #27ae60; padding: 20px; border-radius: 12px; border-left: 5px solid #27ae60;">
+                    <h4 style="margin: 0 0 15px 0; color: #155724;">⚡ Efficacité</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Algorithme simple et rapide pour la plupart des cas.</p>
+                </div>
+                <div style="background: #f3e5f5; border: 2px solid #9c27b0; padding: 20px; border-radius: 12px; border-left: 5px solid #9c27b0;">
+                    <h4 style="margin: 0 0 15px 0; color: #4a148c;">🔍 Transparence</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Le processus de déduction est explicable et traçable.</p>
+                </div>
+                <div style="background: #e3f2fd; border: 2px solid #2196f3; padding: 20px; border-radius: 12px; border-left: 5px solid #2196f3;">
+                    <h4 style="margin: 0 0 15px 0; color: #0d47a1;">🔧 Simplicité</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Facile à implémenter et à comprendre.</p>
+                </div>
+            </div>
+
+            <h3>❌ Limites</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+                <div style="background: #f8d7da; border: 2px solid #dc3545; padding: 20px; border-radius: 12px; border-left: 5px solid #dc3545;">
+                    <h4 style="margin: 0 0 15px 0; color: #721c24;">⏱️ Complexité computationnelle</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Peut être coûteux pour de très grandes bases de connaissances.</p>
+                </div>
+                <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 12px; border-left: 5px solid #ffc107;">
+                    <h4 style="margin: 0 0 15px 0; color: #856404;">📈 Monotonie</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Difficulté à gérer la révision des connaissances (rétractation).</p>
+                </div>
+                <div style="background: #f5c6cb; border: 2px solid #e91e63; padding: 20px; border-radius: 12px; border-left: 5px solid #e91e63;">
+                    <h4 style="margin: 0 0 15px 0; color: #880e4f;">🎯 Rigidité</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Ne peut pas gérer l'incertitude ou les informations incomplètes.</p>
+                </div>
+                <div style="background: #ffebee; border: 2px solid #f44336; padding: 20px; border-radius: 12px; border-left: 5px solid #f44336;">
+                    <h4 style="margin: 0 0 15px 0; color: #c62828;">🔄 Pas d'apprentissage</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Ne s'améliore pas automatiquement avec l'expérience.</p>
+                </div>
+                <div style="background: #fce4ec; border: 2px solid #ad1457; padding: 20px; border-radius: 12px; border-left: 5px solid #ad1457;">
+                    <h4 style="margin: 0 0 15px 0; color: #4a148c;">📊 Explosion combinatoire</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Le nombre de règles peut croître exponentiellement.</p>
+                </div>
+                <div style="background: #e8eaf6; border: 2px solid #3f51b5; padding: 20px; border-radius: 12px; border-left: 5px solid #3f51b5;">
+                    <h4 style="margin: 0 0 15px 0; color: #1a237e;">🎨 Créativité limitée</h4>
+                    <p style="margin: 0; font-size: 0.95em;">Ne peut pas générer de solutions innovantes ou créatives.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Conclusion -->
+        <div class="slide conclusion">
+            <h1>Conclusion</h1>
+            
+            <div style="text-align: center; margin: 60px 0;">
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 40px; border-radius: 20px; margin: 40px 0; border: 2px solid #e3f2fd;">
+                    <h2 style="font-size: 2.2em; margin-bottom: 30px; color: #2c3e50;">🎯 Points Clés</h2>
+                    <p style="font-size: 1.4em; line-height: 1.8; margin: 20px 0; color: #2c3e50;">
+                        Le <strong>raisonnement direct</strong> est une méthode puissante de déduction logique qui permet d'inférer de nouvelles connaissances de manière systématique et déterministe.
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.7; margin: 20px 0; color: #555;">
+                        Il s'applique dans de nombreux domaines : <strong>systèmes experts</strong>, <strong>intelligence artificielle</strong>, et <strong>vérification formelle</strong>.
+                    </p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); padding: 30px; border-radius: 15px; margin: 40px 0; border: 2px solid #e1f5fe;">
+                    <h3 style="font-size: 1.6em; margin-bottom: 20px; color: #2c3e50;">🔮 Perspectives d'Avenir</h3>
+                    <p style="font-size: 1.2em; line-height: 1.6; color: #555;">
+                        Le raisonnement direct continue d'évoluer avec l'<strong>IA hybride</strong> et le <strong>machine learning</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions -->
+        <div class="slide">
+            <h1>Questions et discussion</h1>
+            <div style="text-align: center; margin-top: 100px;">
+                <h2 style="font-size: 3em; color: #2c3e50;">Merci pour votre attention !</h2>
+                <p style="font-size: 1.5em; margin-top: 30px; color: #7f8c8d;">
+                    <em>Prêt à répondre à vos questions sur le raisonnement direct et ses applications.</em>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Mode plein écran -->
+    <div class="fullscreen-mode" id="fullscreenMode">
+        <div class="slide-counter" id="slideCounter">1 / 11</div>
+        <button class="exit-fullscreen" onclick="exitFullscreen()">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor; margin-right: 8px;">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            Quitter
+        </button>
+        
+        <div class="fullscreen-slide active" id="fullscreenSlide">
+            <!-- Le contenu du slide sera injecté ici -->
+        </div>
+        
+        <div class="fullscreen-controls">
+            <button class="control-btn" id="prevBtn" onclick="previousSlide()">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor; margin-right: 8px;">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+                Précédent
+            </button>
+            <button class="control-btn" id="nextBtn" onclick="nextSlide()">
+                Suivant
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor; margin-left: 8px;">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Ajout d'une navigation simple
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                window.scrollBy(0, window.innerHeight);
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft') {
+                window.scrollBy(0, -window.innerHeight);
+                e.preventDefault();
+            }
+        });
+
+        // ===== ANIMATIONS ET EFFETS DYNAMIQUES =====
+        
+        // Animation de révélation de texte au scroll
+        function revealText() {
+            const textElements = document.querySelectorAll('.text-reveal');
+            textElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+        
+        // Animation de hover pour les cartes
+        document.querySelectorAll('.hover-scale').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-8px)';
+                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.08)';
+            });
+        });
+        
+        // Animation de clic pour les éléments interactifs
+        document.querySelectorAll('.hover-lift').forEach(element => {
+            element.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05) translateY(-8px)';
+                }, 150);
+            });
+        });
+        
+        // Animation de gradient pour le titre
+        function animateGradient() {
+            const titleElement = document.querySelector('.gradient-animate');
+            if (titleElement) {
+                titleElement.style.backgroundPosition = '0% 50%';
+                titleElement.style.animation = 'gradientShift 3s ease infinite';
+            }
+        }
+        
+        // Barre de progression améliorée
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+            
+            // Créer une barre de progression si elle n'existe pas
+            let progressBar = document.querySelector('.progress-bar');
+            if (!progressBar) {
+                progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                progressBar.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: ${progress}%;
+                    height: 4px;
+                    background: linear-gradient(90deg, #667eea, #764ba2);
+                    z-index: 1000;
+                    transition: width 0.3s ease;
+                    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+                `;
+                document.body.appendChild(progressBar);
+            } else {
+                progressBar.style.width = progress + '%';
+            }
+            
+            // Révélation de texte
+            revealText();
+        });
+        
+        // Initialisation des animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Révélation de texte
+            revealText();
+            
+            // Animation de gradient
+            animateGradient();
+        });
+        
+        // Animation de chargement
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+        });
+        
+        // Navigation par numéros (1-8 pour les slides)
+        document.addEventListener('keydown', function(e) {
+            const num = parseInt(e.key);
+            if (num >= 1 && num <= 8) {
+                const slides = document.querySelectorAll('.slide');
+                if (slides[num - 1]) {
+                    slides[num - 1].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+        
+        // Animation de pulse pour les éléments importants
+        function pulseImportantElements() {
+            const importantElements = document.querySelectorAll('h1, .method-box, .formula');
+            importantElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.classList.add('pulse');
+                });
+                element.addEventListener('mouseleave', function() {
+                    this.classList.remove('pulse');
+                });
+            });
+        }
+        
+        // Initialisation des effets de pulse
+        document.addEventListener('DOMContentLoaded', pulseImportantElements);
+        
+        // Animation de rotation pour les icônes
+        document.querySelectorAll('.wave').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.animation = 'wave 0.5s ease-in-out infinite';
+            });
+            icon.addEventListener('mouseleave', function() {
+                this.style.animation = 'wave 2s ease-in-out infinite';
+            });
+        });
+        
+        // ===== MODE PLEIN ÉCRAN =====
+        
+        let currentSlideIndex = 0;
+        let slides = [];
+        let isFullscreen = false;
+        
+        // Initialisation des slides
+        function initSlides() {
+            slides = Array.from(document.querySelectorAll('.slide'));
+        }
+        
+        // Basculer le mode plein écran
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        }
+        
+        // Entrer en mode plein écran
+        function enterFullscreen() {
+            const fullscreenMode = document.getElementById('fullscreenMode');
+            const fullscreenBtn = document.querySelector('.fullscreen-btn');
+            
+            // Utiliser l'API native du navigateur
+            if (fullscreenMode.requestFullscreen) {
+                fullscreenMode.requestFullscreen();
+            } else if (fullscreenMode.webkitRequestFullscreen) {
+                fullscreenMode.webkitRequestFullscreen();
+            } else if (fullscreenMode.mozRequestFullScreen) {
+                fullscreenMode.mozRequestFullScreen();
+            } else if (fullscreenMode.msRequestFullscreen) {
+                fullscreenMode.msRequestFullscreen();
+            }
+            
+            fullscreenMode.classList.add('active');
+            fullscreenBtn.style.display = 'none';
+            isFullscreen = true;
+            
+            // Charger le premier slide
+            loadSlide(0);
+        }
+        
+        // Sortir du mode plein écran
+        function exitFullscreen() {
+            // Utiliser l'API native du navigateur
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            
+            const fullscreenMode = document.getElementById('fullscreenMode');
+            const fullscreenBtn = document.querySelector('.fullscreen-btn');
+            
+            fullscreenMode.classList.remove('active');
+            fullscreenBtn.style.display = 'flex';
+            isFullscreen = false;
+        }
+        
+        // Détecter la sortie du mode plein écran
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                const fullscreenMode = document.getElementById('fullscreenMode');
+                const fullscreenBtn = document.querySelector('.fullscreen-btn');
+                
+                fullscreenMode.classList.remove('active');
+                fullscreenBtn.style.display = 'flex';
+                isFullscreen = false;
+            }
+        });
+        
+        // Support pour les autres navigateurs
+        document.addEventListener('webkitfullscreenchange', function() {
+            if (!document.webkitFullscreenElement) {
+                const fullscreenMode = document.getElementById('fullscreenMode');
+                const fullscreenBtn = document.querySelector('.fullscreen-btn');
+                
+                fullscreenMode.classList.remove('active');
+                fullscreenBtn.style.display = 'flex';
+                isFullscreen = false;
+            }
+        });
+        
+        document.addEventListener('mozfullscreenchange', function() {
+            if (!document.mozFullScreenElement) {
+                const fullscreenMode = document.getElementById('fullscreenMode');
+                const fullscreenBtn = document.querySelector('.fullscreen-btn');
+                
+                fullscreenMode.classList.remove('active');
+                fullscreenBtn.style.display = 'flex';
+                isFullscreen = false;
+            }
+        });
+        
+        document.addEventListener('MSFullscreenChange', function() {
+            if (!document.msFullscreenElement) {
+                const fullscreenMode = document.getElementById('fullscreenMode');
+                const fullscreenBtn = document.querySelector('.fullscreen-btn');
+                
+                fullscreenMode.classList.remove('active');
+                fullscreenBtn.style.display = 'flex';
+                isFullscreen = false;
+            }
+        });
+        
+        // Charger un slide spécifique
+        function loadSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            const fullscreenSlide = document.getElementById('fullscreenSlide');
+            const slideCounter = document.getElementById('slideCounter');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            // Animation de sortie
+            fullscreenSlide.classList.add('slide-transition-exit');
+            
+            setTimeout(() => {
+                // Cloner le slide
+                const slideClone = slides[index].cloneNode(true);
+                slideClone.style.margin = '0';
+                slideClone.style.width = '100%';
+                slideClone.style.height = '100%';
+                slideClone.style.maxWidth = 'none';
+                slideClone.style.maxHeight = 'none';
+                slideClone.style.overflowY = 'auto';
+                slideClone.style.boxShadow = 'none';
+                slideClone.style.display = 'block';
+                slideClone.style.padding = '60px';
+                slideClone.style.boxSizing = 'border-box';
+                
+                // Remplacer le contenu
+                fullscreenSlide.innerHTML = '';
+                fullscreenSlide.appendChild(slideClone);
+                
+                // Mettre à jour l'index
+                currentSlideIndex = index;
+                
+                // Mettre à jour le compteur
+                slideCounter.textContent = `${index + 1} / ${slides.length}`;
+                
+                // Mettre à jour les boutons
+                prevBtn.disabled = (index === 0);
+                nextBtn.disabled = (index === slides.length - 1);
+                
+                // Animation d'entrée
+                fullscreenSlide.classList.remove('slide-transition-exit');
+                fullscreenSlide.classList.add('slide-transition-enter');
+                
+                setTimeout(() => {
+                    fullscreenSlide.classList.remove('slide-transition-enter');
+                }, 500);
+            }, 250);
+        }
+        
+        // Slide suivant
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                loadSlide(currentSlideIndex + 1);
+            }
+        }
+        
+        // Slide précédent
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                loadSlide(currentSlideIndex - 1);
+            }
+        }
+        
+        // Navigation au clavier en mode plein écran
+        document.addEventListener('keydown', function(e) {
+            if (!isFullscreen) return;
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    previousSlide();
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    exitFullscreen();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    loadSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    loadSlide(slides.length - 1);
+                    break;
+            }
+        });
+        
+        // Gestion de la touche F11 pour le mode plein écran
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+        
+        // Navigation par numéros en mode plein écran
+        document.addEventListener('keydown', function(e) {
+            if (!isFullscreen) return;
+            
+            const num = parseInt(e.key);
+            if (num >= 1 && num <= slides.length) {
+                loadSlide(num - 1);
+            }
+        });
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlides();
+        });
+    </script>
+</body>
+</html>
