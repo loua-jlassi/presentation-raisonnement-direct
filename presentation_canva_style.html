@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raisonnement Direct - Présentation Canva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #43e97b;
+            --warning: #fa709a;
+            --info: #4facfe;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .presentation-wrapper {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100vw;
+            width: 100vw;
+            height: 100vh;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            box-sizing: border-box;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: scaleX(0);
+            animation: slideInLeft 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-180deg) scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Title Slide */
+        .title-slide {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background-size: 200% 200%;
+            color: white;
+            text-align: center;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title-slide::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -300px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .title-slide::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -250px;
+            left: -250px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .title-slide h1 {
+            font-size: 5.5em;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            letter-spacing: -2px;
+            animation: fadeInDown 1.2s 0.3s both, pulse 3s 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-slide h2 {
+            font-size: 2.2em;
+            font-weight: 400;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s 0.6s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-slide .info {
+            font-size: 1.4em;
+            margin: 15px 0;
+            font-weight: 300;
+            animation: fadeInUp 1.2s 0.9s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Slide Number */
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5em;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            z-index: 100;
+            animation: rotateIn 0.8s 0.2s both;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 3.8em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            animation: fadeInDown 0.8s both;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 30px 0 20px;
+            animation: fadeInUp 0.8s 0.2s both;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 25px 0 15px;
+            animation: fadeInLeft 0.8s 0.3s both;
+        }
+
+        h4 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 15px 0 10px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-left: 6px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s both;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .card-primary {
+            border-left-color: var(--primary);
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .card-success {
+            border-left-color: var(--success);
+            background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+        }
+
+        .card-warning {
+            border-left-color: var(--warning);
+            background: linear-gradient(135deg, #fff5f8 0%, #ffffff 100%);
+        }
+
+        .card-info {
+            border-left-color: var(--info);
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        /* Numbered Items */
+        .numbered-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            animation: fadeInRight 0.8s both;
+        }
+
+        .numbered-item:hover {
+            transform: translateX(10px);
+        }
+
+        .numbered-item .number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5em;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .numbered-item .content {
+            flex: 1;
+        }
+
+        .numbered-item .content p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: translateX(-50%);
+            animation: fadeInUp 1s 0.5s both;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            animation: fadeInUp 0.8s both;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 0 30px;
+            animation: scaleIn 0.6s both;
+        }
+
+        .timeline-dot {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3em;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            z-index: 1;
+            flex-shrink: 0;
+            animation: rotateIn 0.8s both;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s both;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tbody tr {
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f8f9ff;
+            transform: scale(1.01);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9em;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            animation: scaleIn 0.6s both;
+        }
+
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .slide-indicator {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-weight: 600;
+            color: var(--primary);
+            animation: fadeInDown 0.8s both;
+        }
+
+        /* Decorative Elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .decorative-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .decorative-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--warning) 100%);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -5s;
+        }
+
+        /* Text Animations */
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #2c3e50;
+            animation: fadeInUp 0.8s 0.5s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-wrapper">
+        <div class="slide-indicator" id="slideIndicator">1 / 15</div>
+        
+        <div class="slides-container" id="slidesContainer">
+            
+            <!-- Slide 0: Title -->
+            <div class="slide title-slide">
+                <h1>RAISONNEMENT DIRECT</h1>
+                <h2>Méthodes et applications du raisonnement logique</h2>
+                <div class="info"><strong>Présenté par :</strong> Loua El Jelassi</div>
+                <div class="info"><strong>Cours :</strong> Représentation de connaissances et raisonnements</div>
+                <div class="info"><strong>Année académique :</strong> 2025 / 2026</div>
+            </div>
+
+            <!-- Slide 1: Plan -->
+            <div class="slide">
+                <div class="slide-number">1</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Plan de la Présentation</h1>
+                
+                <div class="grid-2">
+                    <div class="card card-primary">
+                        <div class="numbered-item">
+                            <div class="number">1</div>
+                            <div class="content">
+                                <h4>Introduction - Historique</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <div class="numbered-item">
+                            <div class="number">2</div>
+                            <div class="content">
+                                <h4>Qu'est-ce que le Raisonnement Direct ?</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <div class="numbered-item">
+                            <div class="number">3</div>
+                            <div class="content">
+                                <h4>Architecture du Raisonnement Direct</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-info">
+                        <div class="numbered-item">
+                            <div class="number">4</div>
+                            <div class="content">
+                                <h4>Méthodes d'Inférence</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-primary">
+                        <div class="numbered-item">
+                            <div class="number">5</div>
+                            <div class="content">
+                                <h4>Modus Ponens</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <div class="numbered-item">
+                            <div class="number">6</div>
+                            <div class="content">
+                                <h4>Chaînage Avant</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <div class="numbered-item">
+                            <div class="number">7</div>
+                            <div class="content">
+                                <h4>Chaînage Arrière</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-info">
+                        <div class="numbered-item">
+                            <div class="number">8</div>
+                            <div class="content">
+                                <h4>Exemple d'Application</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-primary">
+                        <div class="numbered-item">
+                            <div class="number">9</div>
+                            <div class="content">
+                                <h4>Avantages & Limites</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <div class="numbered-item">
+                            <div class="number">10</div>
+                            <div class="content">
+                                <h4>Conclusion</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Introduction - Part 1 -->
+            <div class="slide">
+                <div class="slide-number">2</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Introduction</h1>
+                
+                <div class="card card-primary" style="margin: 30px 0;">
+                    <div style="display: flex; gap: 30px; align-items: center;">
+                        <div style="flex: 0 0 200px; text-align: center;">
+                            <div style="width: 150px; height: 150px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); animation: pulse 2s ease-in-out infinite;">
+                                <span style="color: white; font-size: 3em; font-weight: 700;">A</span>
+                            </div>
+                            <h3 style="margin-top: 20px; color: var(--primary);">Aristote</h3>
+                            <p style="color: #666; margin-top: 10px;">384–322 av. J.-C.</p>
+                        </div>
+                        <div style="flex: 1;">
+                            <p style="font-size: 1.3em; line-height: 1.8; color: #2c3e50;">
+                                Père de la logique formelle, il introduit le syllogisme dans <strong style="color: var(--primary);">Organon</strong>, base du raisonnement déductif moderne.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="text-align: center; margin: 40px 0;">L'Évolution Historique</h2>
+            </div>
+
+            <!-- Slide 3: Introduction - Part 2 (Timeline) -->
+            <div class="slide">
+                <div class="slide-number">3</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">L'Évolution Historique</h1>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>XXᵉ siècle</h3>
+                            <p style="font-size: 1.1em; line-height: 1.6; color: #555; margin-top: 10px;">
+                                Frege, Tarski et Turing formalisent la logique et ouvrent la voie à son automatisation.
+                            </p>
+                        </div>
+                        <div class="timeline-dot">XX</div>
+                        <div style="flex: 1;"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div style="flex: 1;"></div>
+                        <div class="timeline-dot">50-70</div>
+                        <div class="timeline-content">
+                            <h3>Années 1950–1970</h3>
+                            <p style="font-size: 1.1em; line-height: 1.6; color: #555; margin-top: 10px;">
+                                Naissance des systèmes experts et des moteurs d'inférence, premières applications du raisonnement direct.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Aujourd'hui</h3>
+                            <p style="font-size: 1.1em; line-height: 1.6; color: #555; margin-top: 10px;">
+                                Utilisé dans l'intelligence artificielle, la vérification formelle et les bases de données déductives.
+                            </p>
+                        </div>
+                        <div class="timeline-dot">∞</div>
+                        <div style="flex: 1;"></div>
+                    </div>
+                </div>
+
+                <div class="card" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; margin-top: 40px;">
+                    <h3 style="color: white; margin-bottom: 15px;">L'Évolution du Concept</h3>
+                    <p style="font-size: 1.2em; line-height: 1.7; margin: 0; color: white;">
+                        Du syllogisme d'Aristote aux systèmes intelligents modernes, le raisonnement direct est passé d'une idée philosophique à un outil logique et computationnel essentiel.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 4: Qu'est-ce que - Part 1 -->
+            <div class="slide">
+                <div class="slide-number">4</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Qu'est-ce que le raisonnement direct ?</h1>
+                
+                <h3>Définition fondamentale</h3>
+                <div class="card card-primary">
+                    <p style="font-size: 1.3em; line-height: 1.8; color: #2c3e50; margin: 0 0 15px 0;">
+                        <strong style="color: var(--primary); font-size: 1.2em;">Le raisonnement direct</strong> est une méthode de déduction logique qui permet d'inférer de nouvelles connaissances à partir de faits et de règles déjà connus.
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.8; color: #2c3e50; margin: 0;">
+                        Il repose sur l'application systématique et déterministe de règles d'inférence afin de produire des conclusions logiquement valides.
+                    </p>
+                </div>
+
+                <h3>Principe de base</h3>
+                <p style="font-size: 1.2em; margin-bottom: 20px; color: #2c3e50;">Le raisonnement direct fonctionne comme un <strong style="color: var(--primary);">moteur d'inférence</strong> :</p>
+            </div>
+
+            <!-- Slide 5: Qu'est-ce que - Part 2 (Principe) -->
+            <div class="slide">
+                <div class="slide-number">5</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Principe de base</h1>
+                
+                <div class="grid-3">
+                    <div class="card card-warning">
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3); animation: pulse 2s ease-in-out infinite;">
+                                <span style="color: white; font-size: 3em; font-weight: 700;">1</span>
+                            </div>
+                            <h4 style="color: var(--warning); margin-bottom: 10px;">Prend des faits initiaux</h4>
+                            <p style="color: #666;">(prémisses)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-info">
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--info) 0%, var(--primary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3); animation: pulse 2s ease-in-out infinite 0.3s;">
+                                <span style="color: white; font-size: 3em; font-weight: 700;">2</span>
+                            </div>
+                            <h4 style="color: var(--info); margin-bottom: 10px;">Applique des règles logiques</h4>
+                            <p style="color: #666;">(règles d'inférence)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <div style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3); animation: pulse 2s ease-in-out infinite 0.6s;">
+                                <span style="color: white; font-size: 3em; font-weight: 700;">3</span>
+                            </div>
+                            <h4 style="color: var(--success); margin-bottom: 10px;">Génère de nouvelles conclusions</h4>
+                            <p style="color: #666;">(faits dérivés)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Schéma du processus</h3>
+                <div class="card" style="text-align: center; padding: 40px;">
+                    <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
+                        <div class="card card-warning" style="flex: 1; min-width: 200px;">
+                            <h4 style="margin-bottom: 10px;">FAITS INITIAUX</h4>
+                            <p style="font-size: 1.2em; font-weight: 600;">P, Q, R...</p>
+                        </div>
+                        <div style="font-size: 3em; color: var(--primary); font-weight: 700; animation: pulse 2s ease-in-out infinite;">→</div>
+                        <div class="card card-info" style="flex: 1; min-width: 200px;">
+                            <h4 style="margin-bottom: 10px;">RÈGLES</h4>
+                            <p style="font-size: 1.2em; font-weight: 600;">P→Q, Q→R...</p>
+                        </div>
+                        <div style="font-size: 3em; color: var(--primary); font-weight: 700; animation: pulse 2s ease-in-out infinite 0.5s;">→</div>
+                        <div class="card card-success" style="flex: 1; min-width: 200px;">
+                            <h4 style="margin-bottom: 10px;">CONCLUSIONS</h4>
+                            <p style="font-size: 1.2em; font-weight: 600;">S, T, U...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Caractéristiques -->
+            <div class="slide">
+                <div class="slide-number">6</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Caractéristiques du raisonnement direct</h1>
+                
+                <div class="grid-2">
+                    <div class="card card-warning">
+                        <h4 style="color: var(--warning); margin-bottom: 15px;">Déterministe</h4>
+                        <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50;">
+                            Produit toujours le même résultat pour les mêmes prémisses ; le processus est prévisible.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-info">
+                        <h4 style="color: var(--info); margin-bottom: 15px;">Monotone</h4>
+                        <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50;">
+                            Les conclusions déjà établies restent valides même après l'ajout de nouvelles informations.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <h4 style="color: var(--success); margin-bottom: 15px;">Complet</h4>
+                        <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50;">
+                            Toutes les conclusions logiquement possibles peuvent être déduites à partir des faits connus.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-primary">
+                        <h4 style="color: var(--primary); margin-bottom: 15px;">Sûr</h4>
+                        <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50;">
+                            Ne produit que des conclusions logiquement valides — aucune inférence erronée.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 40px 0 30px;">Types de raisonnement direct</h3>
+                
+                <div class="grid-2">
+                    <div class="card card-success">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3); animation: rotateIn 1s both;">
+                                <span style="color: white; font-size: 4em; font-weight: 700;">→</span>
+                            </div>
+                        </div>
+                        <h4 style="text-align: center; color: var(--success); margin-bottom: 15px;">Chaînage avant</h4>
+                        <div style="background: rgba(67, 233, 123, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
+                            <p style="margin: 0; font-weight: 600; color: var(--success); font-size: 1.1em;">(Faits → Conclusions)</p>
+                        </div>
+                        <p style="text-align: center; font-size: 1.1em; line-height: 1.6; color: #2c3e50;">
+                            On part des faits connus pour déduire de nouvelles connaissances.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3); animation: rotateIn 1s 0.3s both;">
+                                <span style="color: white; font-size: 4em; font-weight: 700;">←</span>
+                            </div>
+                        </div>
+                        <h4 style="text-align: center; color: var(--warning); margin-bottom: 15px;">Chaînage arrière</h4>
+                        <div style="background: rgba(250, 112, 154, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
+                            <p style="margin: 0; font-weight: 600; color: var(--warning); font-size: 1.1em;">(But → Prémisses)</p>
+                        </div>
+                        <p style="text-align: center; font-size: 1.1em; line-height: 1.6; color: #2c3e50;">
+                            On part d'un objectif à vérifier pour retrouver les faits nécessaires.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Architecture - Part 1 -->
+            <div class="slide">
+                <div class="slide-number">7</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Architecture du Raisonnement Direct</h1>
+                
+                <h3>Composants principaux</h3>
+                
+                <div class="grid-2">
+                    <div class="numbered-item">
+                        <div class="number">1</div>
+                        <div class="content">
+                            <h4>Base de faits</h4>
+                            <p>Contient les connaissances connues (les faits ou prémisses). Se met à jour à mesure que de nouvelles conclusions sont déduites.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="numbered-item">
+                        <div class="number">2</div>
+                        <div class="content">
+                            <h4>Base de règles</h4>
+                            <p>Regroupe les règles d'inférence sous forme de conditions et de conclusions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="numbered-item">
+                        <div class="number">3</div>
+                        <div class="content">
+                            <h4>Moteur d'inférence</h4>
+                            <p>C'est le cœur du système. Il applique les règles de la base de règles aux faits existants pour déduire de nouveaux faits.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="numbered-item">
+                        <div class="number">4</div>
+                        <div class="content">
+                            <h4>Mémoire de travail</h4>
+                            <p>Espace temporaire où sont stockées les conclusions intermédiaires avant validation finale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Architecture - Part 2 -->
+            <div class="slide">
+                <div class="slide-number">8</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Architecture du Raisonnement Direct</h1>
+                
+                <div class="numbered-item">
+                    <div class="number">5</div>
+                    <div class="content">
+                        <h4>Interface utilisateur</h4>
+                        <p>Permet à l'utilisateur d'introduire de nouveaux faits ou règles, consulter les résultats, et visualiser le cheminement logique du raisonnement.</p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 40px 0 30px;">Schéma simplifié de l'architecture</h3>
+                
+                <div class="card" style="padding: 50px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <div class="card card-warning" style="max-width: 300px; width: 100%;">
+                            <h4>Base de Règles</h4>
+                        </div>
+                        
+                        <div style="font-size: 3em; color: var(--primary); font-weight: 700; animation: bounce 2s ease-in-out infinite;">↑</div>
+                        
+                        <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; flex-wrap: wrap; gap: 20px;">
+                            <div class="card card-warning" style="flex: 1; min-width: 150px;">
+                                <strong>Interface /<br>Utilisateur</strong>
+                            </div>
+                            <div style="font-size: 2.5em; color: var(--primary); font-weight: 700; animation: pulse 2s ease-in-out infinite;">→</div>
+                            <div class="card card-info" style="flex: 1; min-width: 150px;">
+                                <strong>Moteur<br>d'Inférence</strong>
+                            </div>
+                            <div style="font-size: 2.5em; color: var(--primary); font-weight: 700; animation: pulse 2s ease-in-out infinite 0.5s;">→</div>
+                            <div class="card card-success" style="flex: 1; min-width: 150px;">
+                                <strong>Base de Faits</strong>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 3em; color: var(--primary); font-weight: 700; animation: bounce 2s ease-in-out infinite 0.5s;">↓</div>
+                        
+                        <div class="card card-primary" style="max-width: 250px; width: 100%;">
+                            <h4>Mémoire de Travail</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Architecture - Part 3 (Fonctionnement) -->
+            <div class="slide">
+                <div class="slide-number">9</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Fonctionnement global</h1>
+                
+                <div class="numbered-item">
+                    <div class="number">1</div>
+                    <div class="content">
+                        <p style="font-size: 1.3em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                            L'utilisateur saisit les faits initiaux.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">2</div>
+                    <div class="content">
+                        <p style="font-size: 1.3em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                            Le moteur d'inférence identifie les règles applicables.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">3</div>
+                    <div class="content">
+                        <p style="font-size: 1.3em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                            Les conclusions déduites sont ajoutées à la base de faits.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">4</div>
+                    <div class="content">
+                        <p style="font-size: 1.3em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                            Le processus se répète jusqu'à ce qu'aucune règle ne soit plus applicable.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">5</div>
+                    <div class="content">
+                        <p style="font-size: 1.3em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                            Le module d'explication présente les résultats finaux à l'utilisateur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Méthodes d'inférence -->
+            <div class="slide">
+                <div class="slide-number">10</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Les Méthodes d'Inférence les Plus Utilisées</h1>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Méthode</th>
+                            <th>Type</th>
+                            <th>Principe / Utilisation principale</th>
+                            <th>Domaines d'application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: var(--primary); font-size: 1.1em;">Modus Ponens</strong></td>
+                            <td><span class="badge">Règle d'inférence de base</span></td>
+                            <td>Si P → Q et P est vrai, alors Q est vrai</td>
+                            <td>Tous les systèmes logiques et moteurs d'inférence</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--success); font-size: 1.1em;">Chaînage avant</strong></td>
+                            <td><span class="badge" style="background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);">Raisonnement direct</span></td>
+                            <td>Part des faits connus et applique les règles pour générer de nouvelles conclusions</td>
+                            <td>Systèmes experts, moteurs de règles, intelligence artificielle</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--warning); font-size: 1.1em;">Chaînage arrière</strong></td>
+                            <td><span class="badge" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">Raisonnement direct</span></td>
+                            <td>Part d'un but ou d'une conclusion et remonte pour vérifier quels faits sont nécessaires</td>
+                            <td>Diagnostic médical, planification, IA symbolique</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Slide 11: Modus Ponens -->
+            <div class="slide">
+                <div class="slide-number">11</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Modus Ponens (Règle Fondamentale)</h1>
+                
+                <h3 style="color: #e74c3c;">Principe</h3>
+                <div class="card" style="border-left-color: #e74c3c;">
+                    <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                        Le Modus Ponens est la <strong style="color: #e74c3c;">règle d'inférence fondamentale</strong> sur laquelle reposent toutes les autres méthodes du raisonnement direct.
+                    </p>
+                </div>
+
+                <h3 style="color: #e74c3c;">Forme générale</h3>
+                <div class="card" style="text-align: center; padding: 40px;">
+                    <div style="font-family: 'Courier New', monospace; font-size: 2.5em; line-height: 2.5; color: #2c3e50;">
+                        <div style="font-weight: 600;">P → Q</div>
+                        <div style="font-weight: 600;">P</div>
+                        <div style="border-top: 4px solid #e74c3c; margin: 20px auto; padding-top: 15px; font-weight: bold; color: #e74c3c; max-width: 150px; font-size: 1.2em;">∴ Q</div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1.1em; color: #666;">
+                        <strong style="color: #e74c3c;">En mots simples :</strong> « Si P implique Q et que P est vrai, alors Q est nécessairement vrai. »
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 12: Modus Ponens - Avantages -->
+            <div class="slide">
+                <div class="slide-number">12</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Modus Ponens - Avantages</h1>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Simple à comprendre et à appliquer</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Logique et universelle</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Sert de base aux chaînages avant et arrière</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Utilisée dans tous les moteurs d'inférence</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13: Chaînage Avant -->
+            <div class="slide">
+                <div class="slide-number">13</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Chaînage Avant (Forward Chaining)</h1>
+                
+                <h3 style="color: var(--success);">Principe</h3>
+                <div class="card" style="border-left-color: var(--success);">
+                    <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        Le chaînage avant est la <strong style="color: var(--success);">méthode la plus utilisée</strong> dans les systèmes experts et les moteurs d'inférence.
+                    </p>
+                    <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                        Il consiste à partir des faits connus et à appliquer systématiquement les règles d'inférence pour générer de nouvelles conclusions.
+                    </p>
+                </div>
+
+                <h3 style="color: var(--success);">Fonctionnement</h3>
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);">1</div>
+                    <div class="content">
+                        <p>Le moteur d'inférence utilise la base de faits initiale.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);">2</div>
+                    <div class="content">
+                        <p>Il applique toutes les règles dont les conditions sont satisfaites.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);">3</div>
+                    <div class="content">
+                        <p>Les conclusions obtenues sont ajoutées à la base de faits.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);">4</div>
+                    <div class="content">
+                        <p>Le processus se répète jusqu'à ce qu'aucune nouvelle conclusion ne puisse être dérivée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14: Chaînage Avant - Exemple et Avantages -->
+            <div class="slide">
+                <div class="slide-number">14</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Chaînage Avant - Exemple & Avantages</h1>
+                
+                <h3 style="color: var(--success);">Exemple</h3>
+                <div class="card" style="border-left-color: var(--success); background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);">
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--success);">Règle :</strong> S'il pleut → la route est mouillée
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--success);">Fait :</strong> Il pleut
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.7; color: var(--success); font-weight: 700; margin: 0;">
+                        ⇒ Conclusion : La route est mouillée
+                    </p>
+                </div>
+
+                <h3 style="color: var(--success);">Avantages</h3>
+                <div class="grid-2">
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Facile à implémenter</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Très efficace pour générer de nouvelles connaissances</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 15: Chaînage Arrière -->
+            <div class="slide">
+                <div class="slide-number">15</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Chaînage Arrière (Backward Chaining)</h1>
+                
+                <h3 style="color: var(--warning);">Principe</h3>
+                <div class="card" style="border-left-color: var(--warning);">
+                    <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        Le chaînage arrière est une méthode du raisonnement direct qui consiste à partir d'un <strong style="color: var(--warning);">objectif ou d'une conclusion à vérifier</strong> et à remonter pour déterminer quels faits sont nécessaires pour atteindre cet objectif.
+                    </p>
+                    <p style="font-size: 1.2em; line-height: 1.7; color: #2c3e50; margin: 0;">
+                        Il est particulièrement utilisé lorsque l'on cherche à prouver ou atteindre une conclusion précise à partir de faits connus.
+                    </p>
+                </div>
+
+                <h3 style="color: var(--warning);">Fonctionnement</h3>
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">1</div>
+                    <div class="content">
+                        <p>L'utilisateur définit un objectif ou une conclusion à atteindre.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">2</div>
+                    <div class="content">
+                        <p>Le moteur d'inférence identifie les règles pouvant produire cette conclusion.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">3</div>
+                    <div class="content">
+                        <p>Il vérifie si les conditions de ces règles sont satisfaites par les faits connus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16: Chaînage Arrière - Suite -->
+            <div class="slide">
+                <div class="slide-number">16</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center; background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Chaînage Arrière - Suite</h1>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">4</div>
+                    <div class="content">
+                        <p>Si certaines conditions ne sont pas remplies, le moteur cherche les faits nécessaires pour les satisfaire.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number" style="background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);">5</div>
+                    <div class="content">
+                        <p>Le processus se répète jusqu'à ce que l'objectif soit atteint ou que l'on constate qu'il est impossible de le valider.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--warning);">Exemple</h3>
+                <div class="card" style="border-left-color: var(--warning); background: linear-gradient(135deg, #fff5f8 0%, #ffffff 100%);">
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--warning);">Objectif :</strong> La route est mouillée
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--warning);">Règle :</strong> S'il pleut → la route est mouillée
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--warning);">Fait :</strong> Il pleut
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.7; color: var(--warning); font-weight: 700; margin: 0;">
+                        ⇒ Conclusion : L'objectif « la route est mouillée » est validé
+                    </p>
+                </div>
+
+                <h3 style="color: var(--warning);">Avantages</h3>
+                <div class="grid-2">
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Permet de se concentrer sur un objectif précis</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 1.2em; font-weight: 600; color: #2c3e50; margin: 0;">Efficace pour les systèmes de diagnostic et de planification</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 17: Exemple d'application - Part 1 -->
+            <div class="slide">
+                <div class="slide-number">17</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Exemple d'application - Système de diagnostic médical</h1>
+                
+                <h3>Fonctionnement</h3>
+                <div class="numbered-item">
+                    <div class="number">1</div>
+                    <div class="content">
+                        <p>Le patient présente des symptômes (fièvre, toux, fatigue).</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">2</div>
+                    <div class="content">
+                        <p>Le système applique les règles de diagnostic pour identifier les maladies possibles.</p>
+                    </div>
+                </div>
+                
+                <div class="numbered-item">
+                    <div class="number">3</div>
+                    <div class="content">
+                        <p>Il génère un diagnostic avec les probabilités et les recommandations de traitement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 18: Exemple d'application - Part 2 -->
+            <div class="slide">
+                <div class="slide-number">18</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Exemple d'application - Schéma</h1>
+                
+                <h3>Schéma du processus</h3>
+                <div class="card" style="padding: 40px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <div class="card card-info" style="width: 100%; max-width: 400px;">
+                            <div style="font-size: 0.9em; color: var(--info); font-weight: 600; margin-bottom: 10px; text-transform: uppercase;">Base de faits</div>
+                            <div style="font-size: 1.1em; color: #2c3e50; font-weight: 600;">Fièvre • Toux • Fatigue</div>
+                        </div>
+                        
+                        <div style="font-size: 2.5em; color: var(--primary); font-weight: 700; animation: bounce 2s ease-in-out infinite;">↓</div>
+                        
+                        <div class="card card-warning" style="width: 100%; max-width: 400px;">
+                            <div style="font-size: 0.9em; color: var(--warning); font-weight: 600; margin-bottom: 10px; text-transform: uppercase;">Moteur d'inférence</div>
+                            <div style="font-size: 1.1em; color: #2c3e50; font-weight: 600;">Application des règles</div>
+                            <div style="font-size: 0.9em; color: #666; margin-top: 10px; font-style: italic;">Règle 1: Fièvre + Toux → Grippe</div>
+                            <div style="font-size: 0.9em; color: #666; margin-top: 5px; font-style: italic;">Règle 2: Fièvre + Fatigue → Infection</div>
+                        </div>
+                        
+                        <div style="font-size: 2.5em; color: var(--primary); font-weight: 700; animation: bounce 2s ease-in-out infinite 0.5s;">↓</div>
+                        
+                        <div class="card card-success" style="width: 100%; max-width: 400px;">
+                            <div style="font-size: 0.9em; color: var(--success); font-weight: 600; margin-bottom: 10px; text-transform: uppercase;">Diagnostic</div>
+                            <div style="font-size: 1.2em; color: #2c3e50; font-weight: 700;">Grippe (probabilité: 85%)</div>
+                            <div style="font-size: 1em; color: #666; margin-top: 10px;">Traitement: Repos, hydratation, médicaments</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Exemple concret</h3>
+                <div class="card card-success">
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--success);">Règle :</strong> Si Fièvre = vrai ET Toux = vrai → Diagnostic = Grippe
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin: 0 0 10px 0;">
+                        <strong style="color: var(--success);">Symptômes :</strong> Fièvre, Toux, Fatigue
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.7; color: var(--success); font-weight: 700; margin: 0;">
+                        ⇒ Diagnostic : Grippe (probabilité élevée)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 19: Avantages et Limites - Part 1 -->
+            <div class="slide">
+                <div class="slide-number">19</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Avantages et Limites du Raisonnement Direct</h1>
+                
+                <h3>Principaux avantages</h3>
+                <div class="grid-2">
+                    <div class="card card-success">
+                        <h4 style="color: var(--success); margin-bottom: 15px;">Déterminisme</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Résultats prévisibles et reproductibles.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-info">
+                        <h4 style="color: var(--info); margin-bottom: 15px;">Sûreté</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Seules des conclusions logiquement valides sont produites.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <h4 style="color: var(--success); margin-bottom: 15px;">Efficacité</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Rapide et simple à mettre en œuvre.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-primary">
+                        <h4 style="color: var(--primary); margin-bottom: 15px;">Transparence</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Raisonnement traçable et compréhensible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 20: Avantages et Limites - Part 2 -->
+            <div class="slide">
+                <div class="slide-number">20</div>
+                <div class="decorative-circle decorative-circle-1"></div>
+                <h1 style="text-align: center;">Principales limites</h1>
+                
+                <div class="grid-2">
+                    <div class="card card-warning">
+                        <h4 style="color: var(--warning); margin-bottom: 15px;">Rigidité</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Ne gère pas l'incertitude ou les informations incomplètes.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <h4 style="color: var(--warning); margin-bottom: 15px;">Complexité computationnelle</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Peut être coûteux pour de grandes bases de connaissances.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <h4 style="color: var(--warning); margin-bottom: 15px;">Absence d'apprentissage</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Ne s'améliore pas automatiquement avec l'expérience.
+                        </p>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <h4 style="color: var(--warning); margin-bottom: 15px;">Explosion combinatoire</h4>
+                        <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                            Le nombre de règles peut croître rapidement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 21: Conclusion -->
+            <div class="slide">
+                <div class="slide-number">21</div>
+                <div class="decorative-circle decorative-circle-2"></div>
+                <h1 style="text-align: center;">Conclusion</h1>
+                
+                <div class="card card-primary" style="margin: 30px 0;">
+                    <p style="font-size: 1.4em; line-height: 1.8; color: #2c3e50; margin: 0;">
+                        Le <strong style="color: var(--primary);">raisonnement direct</strong> permet d'inférer de nouvelles connaissances de façon logique, prévisible et traçable.
+                    </p>
+                </div>
+                
+                <div class="card card-primary" style="margin: 30px 0;">
+                    <p style="font-size: 1.4em; line-height: 1.8; color: #2c3e50; margin: 0;">
+                        Il est largement utilisé dans les <strong style="color: var(--primary);">systèmes experts</strong> et l'<strong style="color: var(--primary);">intelligence artificielle</strong>, malgré ses limites comme la rigidité et l'absence d'apprentissage automatique.
+                    </p>
+                </div>
+                
+                <div class="card" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; margin: 30px 0;">
+                    <p style="font-size: 1.4em; line-height: 1.8; margin: 0; color: white;">
+                        C'est un <strong style="font-weight: 700;">outil fondamental</strong> pour l'automatisation du raisonnement logique et il continue d'évoluer avec les technologies modernes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 22: Questions -->
+            <div class="slide title-slide">
+                <h1 style="font-size: 4em; margin-bottom: 50px;">Questions et discussion</h1>
+                
+                <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 60px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); max-width: 800px; margin: 0 auto;">
+                    <div style="font-size: 5em; margin-bottom: 30px; text-align: center; animation: bounce 2s ease-in-out infinite;">🙏</div>
+                    <h2 style="font-size: 2.8em; color: white; margin-bottom: 25px; text-align: center; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); font-weight: 600;">Merci pour votre attention !</h2>
+                    <div style="width: 100px; height: 4px; background: white; margin: 0 auto 30px; border-radius: 2px;"></div>
+                    <p style="font-size: 1.5em; margin: 0; color: rgba(255, 255, 255, 0.95); font-weight: 400; line-height: 1.6; text-align: center;">
+                        <em>Prêt à répondre à vos questions sur le raisonnement direct et ses applications.</em>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">‹</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">›</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slidesContainer = document.getElementById('slidesContainer');
+        const slideIndicator = document.getElementById('slideIndicator');
+
+        function updateSlide() {
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            slideIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Reset animations on slide change
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.style.animation = 'none';
+                    setTimeout(() => {
+                        slide.style.animation = '';
+                    }, 10);
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Auto fullscreen on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.log('Erreur plein écran:', err);
+                    });
+                }
+            }, 500);
+            
+            updateSlide();
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+    </script>
+</body>
+</html>
+
