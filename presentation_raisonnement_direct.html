@@ -54,7 +54,8 @@
             backdrop-filter: blur(10px);
             position: relative;
             flex-shrink: 0;
-            overflow-y: auto;
+            overflow-y: hidden;
+            overflow-x: hidden;
             box-sizing: border-box;
             animation: slideIn 0.6s ease-out;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1458,13 +1459,13 @@
                 </div>
                 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border: none; border-left: 6px solid #9c27b0; padding: 25px; border-radius: 10px; text-align: center; min-width: 280px; flex: 1; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.2);">
                     <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);">
-                        <span style="color: white; font-size: 2.5em; font-weight: bold;">R</span>
+                        <span style="color: white; font-size: 2.5em; font-weight: bold;">CM</span>
                     </div>
-                    <h4 style="margin: 0 0 10px 0; color: #9c27b0; font-size: 1.6em; font-weight: 600;">Résolution</h4>
+                    <h4 style="margin: 0 0 10px 0; color: #9c27b0; font-size: 1.6em; font-weight: 600;">Chaînage Mixte</h4>
                     <div style="background: rgba(156, 39, 176, 0.1); padding: 15px; border-radius: 10px; margin: 0 0 10px 0;">
-                        <p style="margin: 0; font-weight: 600; color: #9c27b0; font-size: 1.2em;">—</p>
+                        <p style="margin: 0; font-weight: 600; color: #9c27b0; font-size: 1.2em;">(Avant ↔ Arrière)</p>
                     </div>
-                    <p style="margin: 0; font-size: 1.25em; line-height: 1.5; color: #2c3e50;">Méthode d'élimination des littéraux contradictoires pour maintenir la cohérence logique.</p>
+                    <p style="margin: 0; font-size: 1.25em; line-height: 1.5; color: #2c3e50;">Combinaison du chaînage avant et arrière pour une résolution plus efficace des problèmes complexes.</p>
                 </div>
             </div>
         </div>
@@ -1523,7 +1524,7 @@
                 </div>
             </div>
 
-        <!-- Architecture du raisonnement direct - Partie 2 -->
+        <!-- Composants principaux -->
         <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden;">
             <div class="slide-number">7</div>
             <!-- Éléments décoratifs -->
@@ -1531,9 +1532,7 @@
             <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(118, 75, 162, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             
             <div style="position: relative; z-index: 1;">
-                <h1 style="text-align: center; font-size: 3em; margin-bottom: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Architecture du Raisonnement Direct</h1>
-                
-                <h3 style="color: #667eea; font-weight: bold; font-size: 1.5em; margin: 12px 0 20px 0;">Composants principaux</h3>
+                <h1 style="text-align: center; font-size: 2.5em; margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Composants principaux</h1>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0;">
                     <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border: none; padding: 10px; border-radius: 8px; border-left: 4px solid #9c27b0; box-shadow: 0 6px 20px rgba(156, 39, 176, 0.15);">
                         <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -1555,49 +1554,9 @@
                             <li>visualiser le cheminement logique du raisonnement.</li>
                 </ul>
                     </div>
-            </div>
-
-                <h3 style="color: #667eea; font-weight: bold; font-size: 1.5em; margin: 15px 0 15px 0;">Schéma simplifié de l'architecture</h3>
-                <div style="text-align: center; margin: 8px 0; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);">
-                    <!-- Schéma en flux horizontal avec boîtes modernes -->
-                    <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-                        <!-- Ligne 1: Base de Règles -->
-                        <div style="background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); color: white; padding: 18px 35px; border-radius: 15px; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.35); min-width: 220px; text-align: center; position: relative;">
-                            <div style="font-size: 1.2em; font-weight: 700;">Base de Règles</div>
-                            <div style="position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 12px solid #ff9800;"></div>
-                    </div>
-                        
-                        <!-- Ligne 2: Trois composants horizontaux -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; gap: 15px;">
-                            <!-- Interface Utilisateur -->
-                            <div style="flex: 1; background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.35); text-align: center; position: relative;">
-                                <div style="font-size: 1.1em; font-weight: 700; line-height: 1.3;">Interface<br>Utilisateur</div>
-                                <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 12px solid #e74c3c;"></div>
-                        </div>
-                            
-                            <!-- Moteur d'Inférence (plus grand) -->
-                            <div style="flex: 1.2; background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); color: white; padding: 25px; border-radius: 18px; box-shadow: 0 12px 35px rgba(33, 150, 243, 0.45); text-align: center; position: relative; border: 4px solid rgba(255, 255, 255, 0.3);">
-                                <div style="font-size: 0.9em; font-weight: 600; margin-bottom: 8px; opacity: 0.95; text-transform: uppercase; letter-spacing: 0.5px;">Cœur du système</div>
-                                <div style="font-size: 1.4em; font-weight: 700;">Moteur<br>d'Inférence</div>
-                                <div style="position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid #2196f3;"></div>
-                                <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 12px solid #2196f3;"></div>
-                        </div>
-                            
-                            <!-- Base de Faits -->
-                            <div style="flex: 1; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(39, 174, 96, 0.35); text-align: center; position: relative;">
-                                <div style="position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid #27ae60;"></div>
-                                <div style="font-size: 1.1em; font-weight: 700;">Base de Faits</div>
-                        </div>
-                    </div>
-                        
-                        <!-- Ligne 3: Mémoire de Travail -->
-                        <div style="background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); color: white; padding: 18px 35px; border-radius: 15px; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.35); min-width: 220px; text-align: center; position: relative;">
-                            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 12px solid #9c27b0;"></div>
-                            <div style="font-size: 1.2em; font-weight: 700;">Mémoire de Travail</div>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
         <!-- Architecture du raisonnement direct - Partie 3 -->
         <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden;">
@@ -1614,32 +1573,130 @@
                     <div style="display: flex; align-items: center; margin: 12px 0; padding: 15px; background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); border-radius: 10px; border-left: 6px solid #e74c3c;">
                         <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.8em; margin-right: 15px; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); flex-shrink: 0;">1</div>
                         <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 1.3em; line-height: 1.5;">L'utilisateur saisit les faits initiaux.</p>
-                </div>
+                    </div>
                     <div style="display: flex; align-items: center; margin: 12px 0; padding: 15px; background: linear-gradient(135deg, #fff8e5 0%, #ffe5b2 100%); border-radius: 10px; border-left: 6px solid #f39c12;">
                         <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #f39c12 0%, #f7dc6f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.8em; margin-right: 15px; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3); flex-shrink: 0;">2</div>
                         <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 1.3em; line-height: 1.5;">Le moteur d'inférence identifie les règles applicables.</p>
-                </div>
+                        </div>
                     <div style="display: flex; align-items: center; margin: 12px 0; padding: 15px; background: linear-gradient(135deg, #e5f3ff 0%, #b3d9ff 100%); border-radius: 10px; border-left: 6px solid #2196f3;">
                         <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.8em; margin-right: 15px; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3); flex-shrink: 0;">3</div>
                         <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 1.3em; line-height: 1.5;">Les conclusions déduites sont ajoutées à la base de faits.</p>
-                </div>
+                        </div>
                     <div style="display: flex; align-items: center; margin: 12px 0; padding: 15px; background: linear-gradient(135deg, #f5e5ff 0%, #e1b3ff 100%); border-radius: 10px; border-left: 6px solid #9c27b0;">
                         <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.8em; margin-right: 15px; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); flex-shrink: 0;">4</div>
                         <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 1.3em; line-height: 1.5;">Le processus se répète jusqu'à ce qu'aucune règle ne soit plus applicable.</p>
-                </div>
+                        </div>
                     <div style="display: flex; align-items: center; margin: 12px 0; padding: 15px; background: linear-gradient(135deg, #e5ffe5 0%, #b3ffb3 100%); border-radius: 10px; border-left: 6px solid #27ae60;">
                         <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.8em; margin-right: 15px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); flex-shrink: 0;">5</div>
                         <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 1.3em; line-height: 1.5;">Le module d'explication présente les résultats finaux à l'utilisateur.</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Architecture du raisonnement direct - Schéma simplifié -->
+        <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden;">
+            <div class="slide-number">9</div>
+            <!-- Éléments décoratifs -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(118, 75, 162, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 1;">
+                <h1 style="text-align: center; font-size: 3em; margin-bottom: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Architecture du Raisonnement Direct</h1>
+                
+                <h3 style="color: #667eea; font-weight: bold; font-size: 1.3em; margin: 10px 0 10px 0;">Schéma simplifié de l'architecture</h3>
+                <div style="text-align: center; margin: 5px 0; background: white; padding: 20px 15px; border-radius: 12px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);">
+                    <!-- Schéma avec disposition claire montrant le flux complet -->
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        
+                        <!-- Ligne 1: Entrées (Base de Faits et Base de Règles) -->
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; margin-bottom: 12px; gap: 15px;">
+                            <!-- Base de Faits -->
+                            <div style="flex: 1; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 12px 18px; border-radius: 10px; box-shadow: 0 6px 20px rgba(39, 174, 96, 0.35); text-align: center; max-width: 160px;">
+                                <div style="font-size: 0.95em; font-weight: 700; margin-bottom: 4px;">Base de Faits</div>
+                                <div style="font-size: 0.75em; opacity: 0.95;">Données initiales</div>
+                </div>
+                            
+                            <!-- Base de Règles -->
+                            <div style="flex: 1; background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); color: white; padding: 12px 18px; border-radius: 10px; box-shadow: 0 6px 20px rgba(255, 152, 0, 0.35); text-align: center; max-width: 160px;">
+                                <div style="font-size: 0.95em; font-weight: 700; margin-bottom: 4px;">Base de Règles</div>
+                                <div style="font-size: 0.75em; opacity: 0.95;">Règles de production</div>
+                </div>
+                </div>
+                        
+                        <!-- Flèches vers le Moteur (depuis les deux bases) -->
+                        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 10px; gap: 15px; position: relative;">
+                            <div style="flex: 1; max-width: 160px; display: flex; flex-direction: column; align-items: center;">
+                                <div style="font-size: 1.6em; color: #27ae60; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                                <div style="font-size: 0.65em; color: #27ae60; font-weight: 600; margin-top: 3px;">Lit les faits</div>
+                </div>
+                            <div style="flex: 1; max-width: 160px; display: flex; flex-direction: column; align-items: center;">
+                                <div style="font-size: 1.6em; color: #ff9800; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                                <div style="font-size: 0.65em; color: #ff9800; font-weight: 600; margin-top: 3px;">Applique les règles</div>
+                </div>
+                        </div>
+                        
+                        <!-- Moteur d'Inférence (centré) -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+                            <div style="background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); color: white; padding: 18px 28px; border-radius: 12px; box-shadow: 0 10px 30px rgba(33, 150, 243, 0.45); text-align: center; border: 3px solid rgba(255, 255, 255, 0.3); min-width: 220px; max-width: 320px;">
+                                <div style="font-size: 0.75em; font-weight: 600; margin-bottom: 6px; opacity: 0.95; text-transform: uppercase; letter-spacing: 0.5px;">Cœur du système</div>
+                                <div style="font-size: 1.4em; font-weight: 700; margin-bottom: 5px;">Moteur d'Inférence</div>
+                                <div style="font-size: 0.8em; opacity: 0.95;">Traite et infère</div>
+            </div>
+        </div>
+
+                        <!-- Flèche vers Mémoire de Travail -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div style="font-size: 1.6em; color: #2196f3; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                                <div style="font-size: 0.65em; color: #2196f3; font-weight: 600; margin-top: 3px;">Stocke les résultats</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mémoire de Travail -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+                            <div style="background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); color: white; padding: 12px 20px; border-radius: 10px; box-shadow: 0 6px 20px rgba(156, 39, 176, 0.35); text-align: center; min-width: 180px; max-width: 250px;">
+                                <div style="font-size: 0.95em; font-weight: 700; margin-bottom: 4px;">Mémoire de Travail</div>
+                                <div style="font-size: 0.75em; opacity: 0.95;">Résultats intermédiaires</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Flèche vers Interface -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div style="font-size: 1.6em; color: #9c27b0; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                                <div style="font-size: 0.65em; color: #9c27b0; font-weight: 600; margin-top: 3px;">Affiche les résultats</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Interface Utilisateur -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+                            <div style="background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); color: white; padding: 12px 20px; border-radius: 10px; box-shadow: 0 6px 20px rgba(231, 76, 60, 0.35); text-align: center; min-width: 180px; max-width: 250px;">
+                                <div style="font-size: 0.95em; font-weight: 700; margin-bottom: 4px;">Interface Utilisateur</div>
+                                <div style="font-size: 0.75em; opacity: 0.95;">Visualisation et interaction</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Flèche retour: Interface → Base de Faits -->
+                        <div style="margin-top: 15px; padding-top: 12px; border-top: 2px dashed #ddd;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+                                <div style="font-size: 0.8em; color: #666; font-style: italic;">Flux de retour :</div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="color: #e74c3c; font-weight: 600; font-size: 0.9em;">Interface Utilisateur</span>
+                                    <span style="font-size: 1.4em; color: #e74c3c; animation: slideArrow 1.5s ease-in-out infinite reverse;">←</span>
+                                    <span style="color: #27ae60; font-weight: 600; font-size: 0.9em;">Base de Faits</span>
+                                </div>
+                                <div style="font-size: 0.75em; color: #666;">(Ajout de nouveaux faits)</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
         <!-- Méthodes d'inférence - Introduction -->
         <div class="slide">
-            <div class="slide-number">9</div>
+            <div class="slide-number">10</div>
             <h1 style="text-align: center; font-size: 3em; margin-bottom: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Les Méthodes d'Inférence les Plus Utilisées</h1>
             
             <h3 style="color: #667eea; font-weight: bold; font-size: 1.8em; margin-bottom: 12px;">Méthodes du Raisonnement Direct</h3>
@@ -1650,13 +1707,13 @@
                     <th style="padding: 15px; border: none; text-align: left; font-weight: 700; font-size: 1.3em; text-transform: uppercase; letter-spacing: 0.5px;">Principe / Utilisation principale</th>
                     <th style="padding: 15px; border: none; text-align: left; font-weight: 700; font-size: 1.3em; text-transform: uppercase; letter-spacing: 0.5px;">Domaines d'application</th>
                 </tr>
-                <tr style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); transition: transform 0.3s ease;">
-                    <td style="padding: 20px; border-bottom: 2px solid #2196f3; color: #1a1a1a; font-weight: 600; font-size: 1.2em;"><strong style="color: #2196f3; font-size: 1.25em;">Modus Ponens</strong></td>
-                    <td style="padding: 20px; border-bottom: 2px solid #2196f3; color: #1a1a1a; font-size: 1.15em;">
-                        <span style="background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); color: white; padding: 8px 15px; border-radius: 12px; font-weight: 600; font-size: 1em; display: inline-block;">Règle d'inférence de base</span>
+                <tr style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); transition: transform 0.3s ease;">
+                    <td style="padding: 20px; border-bottom: 2px solid #9c27b0; color: #1a1a1a; font-weight: 600; font-size: 1.2em;"><strong style="color: #9c27b0; font-size: 1.25em;">Chaînage Mixte</strong></td>
+                    <td style="padding: 20px; border-bottom: 2px solid #9c27b0; color: #1a1a1a; font-size: 1.15em;">
+                        <span style="background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); color: white; padding: 8px 15px; border-radius: 12px; font-weight: 600; font-size: 1em; display: inline-block;">Raisonnement direct</span>
                     </td>
-                    <td style="padding: 20px; border-bottom: 2px solid #2196f3; color: #1a1a1a; font-size: 1.15em; line-height: 1.5;">Si P → Q et P est vrai, alors Q est vrai</td>
-                    <td style="padding: 20px; border-bottom: 2px solid #2196f3; color: #1a1a1a; font-size: 1.15em; line-height: 1.5;">Tous les systèmes logiques et moteurs d'inférence</td>
+                    <td style="padding: 20px; border-bottom: 2px solid #9c27b0; color: #1a1a1a; font-size: 1.15em; line-height: 1.5;">Combinaison du chaînage avant et arrière pour une résolution plus efficace des problèmes complexes</td>
+                    <td style="padding: 20px; border-bottom: 2px solid #9c27b0; color: #1a1a1a; font-size: 1.15em; line-height: 1.5;">Systèmes experts avancés, résolution de problèmes complexes, IA hybride</td>
                 </tr>
                 <tr style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); transition: transform 0.3s ease;">
                     <td style="padding: 20px; border-bottom: 2px solid #27ae60; color: #1a1a1a; font-weight: 600; font-size: 1.2em;"><strong style="color: #27ae60; font-size: 1.25em;">Chaînage Avant (Forward Chaining)</strong></td>
@@ -1679,7 +1736,7 @@
 
         <!-- Méthode 1 : Modus Ponens -->
         <div class="slide" style="background: linear-gradient(135deg, #fff5f5 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
-            <div class="slide-number">10</div>
+            <div class="slide-number">11</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(231, 76, 60, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -1778,9 +1835,148 @@
             </div>
             </div>
 
-        <!-- Méthode 2 : Chaînage Avant -->
+        <!-- Méthode 2 : Chaînage Mixte -->
+        <div class="slide" style="background: linear-gradient(135deg, #f5e5ff 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
+            <div class="slide-number">12</div>
+            <!-- Éléments décoratifs -->
+            <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(156, 39, 176, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 1;">
+                <h1 style="text-align: center; font-size: 2.5em; margin-bottom: 10px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Chaînage Mixte</h1>
+                
+                <h3 style="color: #9c27b0; font-weight: 700; font-size: 1.2em; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 6px; height: 6px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); border-radius: 50%; display: inline-block;"></span>
+                    Principe
+                </h3>
+                <div style="background: white; border: none; color: #1a1a1a; padding: 12px; border-radius: 12px; margin: 4px 0 10px 0; box-shadow: 0 8px 30px rgba(156, 39, 176, 0.15); border-left: 5px solid #9c27b0; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: linear-gradient(135deg, rgba(156, 39, 176, 0.05) 0%, transparent 100%); border-radius: 0 0 0 100%;"></div>
+                    <p style="font-size: 1em; line-height: 1.4; margin: 0 0 4px 0; color: #2c3e50; position: relative; z-index: 1;">
+                        Le chaînage mixte est une <strong style="color: #9c27b0; font-weight: 700;">méthode hybride</strong> qui combine les avantages du chaînage avant et du chaînage arrière pour résoudre des problèmes complexes de manière plus efficace.
+                    </p>
+                    <p style="font-size: 1em; line-height: 1.4; margin: 0; color: #2c3e50; position: relative; z-index: 1;">
+                        Il alterne entre les deux approches selon les besoins du problème, permettant une résolution plus flexible et optimisée.
+                </p>
+            </div>
+
+                <h3 style="color: #9c27b0; font-weight: 700; font-size: 1.2em; margin: 10px 0 6px 0; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 6px; height: 6px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); border-radius: 50%; display: inline-block;"></span>
+                    Avantages
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 10px 0;">
+                    <div style="background: white; border: 2px solid #e0e0e0; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        <p style="margin: 0; font-weight: 600; color: #000; font-size: 0.95em;">Flexibilité maximale dans la résolution</p>
+                </div>
+                    <div style="background: white; border: 2px solid #e0e0e0; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        <p style="margin: 0; font-weight: 600; color: #000; font-size: 0.95em;">Efficace pour les problèmes complexes</p>
+                </div>
+                    <div style="background: white; border: 2px solid #e0e0e0; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        <p style="margin: 0; font-weight: 600; color: #000; font-size: 0.95em;">Combine les forces des deux méthodes</p>
+                </div>
+                    <div style="background: white; border: 2px solid #e0e0e0; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        <p style="margin: 0; font-weight: 600; color: #000; font-size: 0.95em;">Optimise le temps de traitement</p>
+                </div>
+            </div>
+
+                <h3 style="color: #9c27b0; font-weight: 700; font-size: 1.2em; margin: 10px 0 6px 0; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 6px; height: 6px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); border-radius: 50%; display: inline-block;"></span>
+                    Fonctionnement
+                </h3>
+                <div style="background: white; padding: 10px; border-radius: 12px; margin: 4px 0 10px 0; box-shadow: 0 8px 30px rgba(156, 39, 176, 0.15); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, #9c27b0 0%, #7b1fa2 100%);"></div>
+                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); border-radius: 10px; border-left: 4px solid #e74c3c; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
+                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); flex-shrink: 0; position: relative; z-index: 1;">1</div>
+                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Le système commence par identifier les objectifs à atteindre (chaînage arrière).</p>
+                </div>
+                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #fff8e5 0%, #ffe5b2 100%); border-radius: 10px; border-left: 4px solid #f39c12; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
+                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #f39c12 0%, #f7dc6f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3); flex-shrink: 0; position: relative; z-index: 1;">2</div>
+                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Il utilise le chaînage avant pour générer des faits intermédiaires utiles.</p>
+                </div>
+                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #e5f3ff 0%, #b3d9ff 100%); border-radius: 10px; border-left: 4px solid #2196f3; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(33, 150, 243, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
+                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3); flex-shrink: 0; position: relative; z-index: 1;">3</div>
+                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Il alterne entre les deux approches selon les besoins du problème.</p>
+            </div>
+                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #f5e5ff 0%, #e1b3ff 100%); border-radius: 10px; border-left: 4px solid #9c27b0; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
+                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); flex-shrink: 0; position: relative; z-index: 1;">4</div>
+                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Le processus se poursuit jusqu'à atteindre les objectifs ou épuiser les possibilités.</p>
+                </div>
+        </div>
+
+                </div>
+                </div>
+
+        <!-- Chaînage Mixte - Partie 2 : Exemple -->
+        <div class="slide" style="background: linear-gradient(135deg, #f5e5ff 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
+            <div class="slide-number">13</div>
+            <!-- Éléments décoratifs -->
+            <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(156, 39, 176, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 1;">
+                <h1 style="text-align: center; font-size: 2.5em; margin-bottom: 10px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Chaînage Mixte</h1>
+                
+                <h3 style="color: #9c27b0; font-weight: 700; font-size: 1.2em; margin: 10px 0 6px 0; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 6px; height: 6px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); border-radius: 50%; display: inline-block;"></span>
+                    Exemple
+                </h3>
+                
+                <!-- Schéma visuel du Chaînage Mixte -->
+                <div style="background: white; padding: 15px; border-radius: 12px; margin: 8px 0 15px 0; box-shadow: 0 8px 30px rgba(156, 39, 176, 0.15); border: 2px solid #9c27b0; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <!-- Explication du processus dans le cadre -->
+                    <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border: none; padding: 10px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #9c27b0;">
+                        <p style="margin: 0; font-size: 0.95em; color: #2c3e50; line-height: 1.3;"><strong style="color: #9c27b0; font-weight: 700;">Processus :</strong> Objectif : "Diagnostiquer une maladie" → Chaînage avant pour générer des symptômes → Chaînage arrière pour vérifier le diagnostic</p>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <!-- Objectif (en haut) -->
+                        <div style="width: 100%; max-width: 280px; text-align: center;">
+                            <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 12px; border-radius: 10px; border: 3px solid #ff9800; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.25); position: relative;">
+                                <div style="font-size: 0.75em; color: #ff9800; font-weight: 600; margin-bottom: 6px; text-transform: uppercase;">Objectif</div>
+                                <div style="font-size: 1em; color: #2c3e50; font-weight: 700; padding: 8px; background: white; border-radius: 8px;">Diagnostiquer une maladie</div>
+                    </div>
+                </div>
+                
+                        <!-- Flèche vers le bas -->
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #9c27b0; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                            <div style="font-size: 0.75em; color: #9c27b0; font-weight: 600; margin-top: 4px;">Chaînage avant</div>
+                        </div>
+                        
+                        <!-- Faits générés -->
+                        <div style="width: 100%; max-width: 280px; text-align: center;">
+                            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 12px; border-radius: 10px; border: 3px solid #27ae60; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.25);">
+                                <div style="font-size: 0.75em; color: #27ae60; font-weight: 600; margin-bottom: 6px; text-transform: uppercase;">Faits Générés</div>
+                                <div style="font-size: 0.95em; color: #2c3e50; font-weight: 600; padding: 8px; background: white; border-radius: 8px; line-height: 1.4;">Fièvre, Toux,<br>Maux de tête</div>
+                        </div>
+                    </div>
+                    
+                        <!-- Flèche vers le bas -->
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #9c27b0; font-weight: bold; animation: slideArrowVertical 1.5s ease-in-out infinite;">↓</div>
+                            <div style="font-size: 0.75em; color: #9c27b0; font-weight: 600; margin-top: 4px;">Chaînage arrière</div>
+                        </div>
+                        
+                        <!-- Diagnostic -->
+                        <div style="width: 100%; max-width: 280px; text-align: center;">
+                            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 12px; border-radius: 10px; border: 3px solid #2196f3; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.25); position: relative;">
+                                <div style="font-size: 0.75em; color: #2196f3; font-weight: 600; margin-bottom: 6px; text-transform: uppercase;">Diagnostic</div>
+                                <div style="font-size: 1em; color: #2c3e50; font-weight: 700; padding: 8px; background: white; border-radius: 8px;">Grippe</div>
+                                <div style="position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; background: #9c27b0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.85em; box-shadow: 0 3px 12px rgba(156, 39, 176, 0.4);">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                        </div>
+                    </div>
+
+        <!-- Méthode 3 : Chaînage Avant -->
         <div class="slide" style="background: linear-gradient(135deg, #f0f9f4 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
-            <div class="slide-number">11</div>
+            <div class="slide-number">14</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(39, 174, 96, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -1848,7 +2044,7 @@
 
         <!-- Chaînage Avant - Partie 2 : Exemple et Avantages -->
         <div class="slide" style="background: linear-gradient(135deg, #f0f9f4 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
-            <div class="slide-number">12</div>
+            <div class="slide-number">15</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(39, 174, 96, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -1911,9 +2107,9 @@
                         </div>
                     </div>
                     
-        <!-- Méthode 3 : Chaînage Arrière -->
+        <!-- Méthode 4 : Chaînage Arrière -->
         <div class="slide" style="background: linear-gradient(135deg, #fff8f0 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
-            <div class="slide-number">13</div>
+            <div class="slide-number">16</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 152, 0, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 152, 0, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -1947,45 +2143,12 @@
                         <p style="margin: 0; font-weight: 600; color: #000; font-size: 0.95em;">Efficace pour les systèmes de diagnostic et de planification</p>
                 </div>
             </div>
-
-                <h3 style="color: #ff9800; font-weight: 700; font-size: 1.2em; margin: 10px 0 6px 0; display: flex; align-items: center; gap: 8px;">
-                    <span style="width: 6px; height: 6px; background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); border-radius: 50%; display: inline-block;"></span>
-                    Fonctionnement
-                </h3>
-                <div style="background: white; padding: 10px; border-radius: 12px; margin: 4px 0 10px 0; box-shadow: 0 8px 30px rgba(255, 152, 0, 0.15); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, #ff9800 0%, #f57c00 100%);"></div>
-                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); border-radius: 10px; border-left: 4px solid #e74c3c; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); flex-shrink: 0; position: relative; z-index: 1;">1</div>
-                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">L'utilisateur définit un objectif ou une conclusion à atteindre.</p>
-                </div>
-                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #fff8e5 0%, #ffe5b2 100%); border-radius: 10px; border-left: 4px solid #f39c12; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #f39c12 0%, #f7dc6f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3); flex-shrink: 0; position: relative; z-index: 1;">2</div>
-                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Le moteur d'inférence identifie les règles pouvant produire cette conclusion.</p>
-                </div>
-                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #e5f3ff 0%, #b3d9ff 100%); border-radius: 10px; border-left: 4px solid #2196f3; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(33, 150, 243, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3); flex-shrink: 0; position: relative; z-index: 1;">3</div>
-                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Il vérifie si les conditions de ces règles sont satisfaites par les faits connus.</p>
-            </div>
-                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #f5e5ff 0%, #e1b3ff 100%); border-radius: 10px; border-left: 4px solid #9c27b0; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); flex-shrink: 0; position: relative; z-index: 1;">4</div>
-                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Si certaines conditions ne sont pas remplies, le moteur cherche les faits nécessaires pour les satisfaire.</p>
-                    </div>
-                    <div style="display: flex; align-items: center; margin: 4px 0; padding: 8px; background: linear-gradient(135deg, #e5ffe5 0%, #b3ffb3 100%); border-radius: 10px; border-left: 4px solid #27ae60; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%); border-radius: 0 10px 0 0;"></div>
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 10px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); flex-shrink: 0; position: relative; z-index: 1;">5</div>
-                        <p style="margin: 0; flex: 1; color: #2c3e50; font-size: 0.9em; line-height: 1.3; position: relative; z-index: 1;">Le processus se répète jusqu'à ce que l'objectif soit atteint ou que l'on constate qu'il est impossible de le valider.</p>
-                        </div>
-                </div>
             </div>
         </div>
 
         <!-- Chaînage Arrière - Partie 2 : Exemple et Avantages -->
         <div class="slide" style="background: linear-gradient(135deg, #fff8f0 0%, #ffffff 50%, #f0f4ff 100%); position: relative; overflow: hidden;">
-            <div class="slide-number">14</div>
+            <div class="slide-number">17</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 152, 0, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 152, 0, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -2067,7 +2230,7 @@
 
         <!-- Exemple simple et clair -->
         <div class="slide">
-            <div class="slide-number">15</div>
+            <div class="slide-number">18</div>
             <h1 style="text-align: center; font-size: 3em; margin-bottom: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Exemple d'application - Système de diagnostic médical</h1>
 
             <h3 style="color: #667eea; font-weight: bold; font-size: 1.3em; margin: 6px 0 8px 0;">Fonctionnement</h3>
@@ -2140,7 +2303,7 @@
 
         <!-- Exemple d'application - Système de recommandation de produits -->
         <div class="slide">
-            <div class="slide-number">16</div>
+            <div class="slide-number">19</div>
             <h1 style="text-align: center; font-size: 3em; margin-bottom: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Exemple d'application - Système de recommandation</h1>
 
             <h3 style="color: #667eea; font-weight: bold; font-size: 1.3em; margin: 6px 0 8px 0;">Fonctionnement</h3>
@@ -2209,7 +2372,7 @@
 
         <!-- Autres Applications Courantes et Avancées -->
         <div class="slide" style="position: relative; overflow: hidden;">
-            <div class="slide-number">17</div>
+            <div class="slide-number">20</div>
             
             <!-- Éléments décoratifs circulaires en arrière-plan -->
             <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
@@ -2270,7 +2433,7 @@
 
         <!-- Avantages et Limites -->
         <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden;">
-            <div class="slide-number">18</div>
+            <div class="slide-number">21</div>
             <!-- Éléments décoratifs -->
             <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
             <div style="position: absolute; bottom: -50px; left: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(118, 75, 162, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -2396,7 +2559,7 @@
 
         <!-- Conclusion -->
         <div class="slide conclusion" style="background: #fdeffc; position: relative; overflow: hidden;">
-            <div class="slide-number">19</div>
+            <div class="slide-number">22</div>
             <!-- Éléments décoratifs animés -->
             <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
             <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(118, 75, 162, 0.12) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
@@ -2424,9 +2587,9 @@
                                 <div style="padding-bottom: 25px; border-bottom: 2px solid #f0f0f0;">
                                     <p style="font-size: 1.3em; line-height: 1.8; margin: 0; color: #2c3e50;">
                                         Il est largement utilisé dans les <strong style="color: #667eea; font-weight: 700;">systèmes experts</strong> et l'<strong style="color: #667eea; font-weight: 700;">intelligence artificielle</strong>, malgré ses limites comme la rigidité et l'absence d'apprentissage automatique.
-                                    </p>
-                                </div>
-                                
+                    </p>
+                </div>
+                
                                 <!-- Troisième partie avec accent -->
                                 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #667eea;">
                                     <p style="font-size: 1.3em; line-height: 1.8; margin: 0; color: #2c3e50;">
@@ -2440,9 +2603,89 @@
             </div>
         </div>
 
+        <!-- Références -->
+        <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden;">
+            <div class="slide-number">23</div>
+            <!-- Éléments décoratifs -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -50px; left: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(118, 75, 162, 0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 1;">
+                <h1 style="text-align: center; font-size: 3em; margin-bottom: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -1px;">Références</h1>
+                
+                <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);">
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            
+                            <!-- Référence 1 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-radius: 10px; border-left: 5px solid #9c27b0; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(156, 39, 176, 0.3);">1</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #9c27b0; font-weight: 700;">Russell, S., & Norvig, P.</strong> (2020). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson Education.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Référence 2 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 10px; border-left: 5px solid #2196f3; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);">2</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #2196f3; font-weight: 700;">Giarratano, J., & Riley, G.</strong> (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Référence 3 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 10px; border-left: 5px solid #27ae60; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(39, 174, 96, 0.3);">3</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #27ae60; font-weight: 700;">Luger, G. F.</strong> (2009). <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em> (6th ed.). Pearson Education.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Référence 4 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 10px; border-left: 5px solid #ff9800; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);">4</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #ff9800; font-weight: 700;">Nilsson, N. J.</strong> (2014). <em>Principles of Artificial Intelligence</em>. Morgan Kaufmann Publishers.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Référence 5 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-radius: 10px; border-left: 5px solid #e91e63; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);">5</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #e91e63; font-weight: 700;">Winston, P. H.</strong> (1992). <em>Artificial Intelligence</em> (3rd ed.). Addison-Wesley Publishing Company.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Référence 6 -->
+                            <div style="display: flex; align-items: flex-start; padding: 15px; background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); border-radius: 10px; border-left: 5px solid #009688; box-shadow: 0 4px 15px rgba(0, 150, 136, 0.15);">
+                                <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #009688 0%, #26a69a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1em; margin-right: 15px; flex-shrink: 0; box-shadow: 0 3px 10px rgba(0, 150, 136, 0.3);">6</div>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-size: 1em; line-height: 1.6; color: #2c3e50;">
+                                        <strong style="color: #009688; font-weight: 700;">Brachman, R. J., & Levesque, H. J.</strong> (2004). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann Publishers.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Questions -->
         <div class="slide" style="background: #fdeffc; position: relative; overflow: hidden; animation: gentlePulse 4s ease-in-out infinite;">
-            <div class="slide-number">20</div>
+            <div class="slide-number">24</div>
             <!-- Éléments décoratifs animés rose pastel très clair -->
             <div style="position: absolute; top: 8%; left: 8%; width: 120px; height: 120px; background: radial-gradient(circle, rgba(255, 228, 225, 0.3) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite; filter: blur(3px); box-shadow: 0 0 30px rgba(255, 228, 225, 0.4);"></div>
             <div style="position: absolute; top: 20%; right: 12%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255, 240, 245, 0.25) 0%, transparent 70%); border-radius: 50%; animation: float 7s ease-in-out infinite reverse; filter: blur(3px); box-shadow: 0 0 25px rgba(255, 240, 245, 0.3);"></div>
@@ -2636,13 +2879,19 @@
                 }
             }
 
-            // Navigation au clavier (priorité à la navigation horizontale)
+            // Navigation au clavier (uniquement horizontale - gauche/droite)
         document.addEventListener('keydown', function(e) {
                 // Ignorer si on est en mode plein écran
                 const fullscreenMode = document.getElementById('fullscreenMode');
                 if (fullscreenMode && fullscreenMode.style.display === 'flex') {
                     return; // Laisser le mode plein écran gérer
                 }
+
+            // Bloquer les flèches haut/bas pour éviter la navigation verticale
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                return;
+            }
 
             if (e.key === 'ArrowRight' || e.key === ' ') {
                 e.preventDefault();
@@ -2652,6 +2901,26 @@
                     previousHorizontalSlide();
                 }
             });
+
+            // Bloquer le scroll de la molette pour éviter la navigation verticale
+            document.addEventListener('wheel', function(e) {
+                // Ignorer si on est en mode plein écran
+                const fullscreenMode = document.getElementById('fullscreenMode');
+                if (fullscreenMode && fullscreenMode.style.display === 'flex') {
+                    return;
+                }
+                
+                // Bloquer le scroll vertical (haut/bas)
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    // Convertir le scroll vertical en navigation horizontale
+                    if (e.deltaY > 0) {
+                        nextHorizontalSlide();
+                    } else {
+                        previousHorizontalSlide();
+                    }
+                }
+            }, { passive: false });
 
             // Navigation tactile (swipe)
             let touchStartX = 0;

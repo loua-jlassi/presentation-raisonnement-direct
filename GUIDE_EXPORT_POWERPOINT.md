@@ -72,3 +72,5 @@ Dans la présentation Reveal.js :
 - Dans PowerPoint, allez dans **Conception > Taille de la diapositive**
 - Ajustez la taille selon vos besoins
 
+
+
